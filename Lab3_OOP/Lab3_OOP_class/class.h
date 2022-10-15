@@ -22,9 +22,19 @@ private:
 public:
     Stack()
     {
-        Array = new Elem[10];
-        Stackpointer = 10;
-        Max_size = 10;
+        Max_size = 3;
+        Array = new Elem[Max_size];
+        Stackpointer = 0;
+    }
+    Stack(const Stack & S) : Stackpointer(S.Stackpointer), Max_size(S.Max_size)
+    {
+        Array = new Elem[S.Max_size];
+        int size = S.Get_size();
+        for (int i = 0; i < size; ++i)
+        {
+            this->Array[i].num = S.Array[i].num;
+            this->Array[i].str = S.Array[i].str;
+        }
     }
     ~Stack()
     {
@@ -35,23 +45,26 @@ public:
     void Set_str (std::string & str);
     void Set_array (Elem *array, int size);
 
-    int Get_int ();
-    std::string Get_str ();
     [[nodiscard]] int Get_size () const;
 
-    void Push (int & num, std::string & str);
-    Elem Pop ();
+    int Push (int & num, std::string & str);
+    int Pop (Elem & el);
 
     [[nodiscard]] int Check () const;
+
+    friend std::ostream & operator << (std::ostream & out, Stack & S);
+    Elem operator -- ();
+    Elem operator -- (int value);
+    Stack & operator + (Elem & parameter);
+    Stack & operator = (const Stack & S);
+    Stack & operator = (Stack && S) noexcept;
 };
 
 template <typename T>
 int getNum(T &Num);
-
 void getStr (std::string & Str);
 
-template <typename T>
-T* Realloc (T* ptr, int size);
+Elem* Realloc (Elem* ptr, int size);
 
 void Show_stack (Stack & S);
 void New_Elem (Stack & S);

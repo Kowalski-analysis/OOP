@@ -2,58 +2,50 @@
 
 void Stack::Set_int (int num)
 {
-    Array[Max_size - Stackpointer].num = num;
+    Array[Stackpointer].num = num;
 }
 void Stack::Set_str (std::string & str)
 {
     std::string buf = std::move(str);
-    Array[Max_size - Stackpointer].str = buf;
+    Array[Stackpointer].str = buf;
 }
 void Stack::Set_array (Elem *array, int size)
 {
     for (int i = 0; i < size; ++i)
     {
-        if (Stackpointer == 0)
-        {
-            delete [] array;
-            throw std::runtime_error ("Stack is overflow");
-        }
         Push(array[i].num, array[i].str);
     }
     delete [] array;
 }
 
-int Stack::Get_int ()
-{
-    return Array[Max_size - Stackpointer].num;
-}
-std::string Stack::Get_str ()
-{
-    return Array[Max_size - Stackpointer].str;
-}
 int Stack::Get_size () const
 {
-    return Max_size - Stackpointer;
+    return Stackpointer;
 }
 
-void Stack::Push (int & num, std::string & str)
+int Stack::Push (int & num, std::string & str)
 {
-    if (Stackpointer == 0) {
-        throw std::runtime_error ("Stack is overflow");
+    if (num == INT32_MIN)
+        return 1;
+    if (Stackpointer == Max_size && Stackpointer != 0) {
+        Array = Realloc(Array, Max_size);
+        Max_size = Max_size * 2;
     }
     Set_int(num);
     std::string buf = std::move(str);
     Set_str(buf);
-    --Stackpointer;
-}
-Elem Stack::Pop ()
-{
-    if (Stackpointer == Max_size)
-    {
-        throw std::runtime_error ("Stack is empty");
-    }
     ++Stackpointer;
-    return Array[Max_size - Stackpointer];
+    return 0;
+}
+int Stack::Pop (Elem & el)
+{
+    if (Stackpointer == 0)
+    {
+        return 1;
+    }
+    --Stackpointer;
+    el = Array[Stackpointer];
+    return 0;
 }
 
 int Stack::Check () const
@@ -62,11 +54,11 @@ int Stack::Check () const
     {
         throw std::runtime_error ("Stack size error");
     }
-    if (Stackpointer == 0)
+    if (Stackpointer == Max_size)
     {
         return 1;
     }
-    if (Stackpointer == Max_size)
+    if (Stackpointer == 0)
     {
         return -1;
     }
@@ -76,10 +68,82 @@ int Stack::Check () const
     }
 }
 
+Elem Stack::operator -- ()
+{
+    Elem buf;
+    if (Get_size())
+    {
+        Pop(buf);
+        Show_stack(*this);
+    }
+    else
+    {
+        buf.str = "Stack is empty\n";
+        buf.num = INT32_MIN;
+    }
+    return buf;
+}
+Elem Stack::operator -- (int value) {
+    Elem buf;
+    if (Get_size())
+    {
+        Show_stack(*this);
+        Pop(buf);
+    }
+    else
+    {
+        buf.str = "Stack is empty\n";
+        buf.num = INT32_MIN;
+    }
+    return buf;
+}
+Stack & Stack::operator + (Elem & parameter) {
+    Push(parameter.num, parameter.str);
+    return *this;
+}
+std::ostream & operator << (std::ostream & out, Stack & S)
+{
+    out << "Max size of stack: " << S.Max_size << std::endl;
+    out << "Current size of stack: " << S.Stackpointer << std::endl;
+    Show_stack(S);
+    return out;
+}
+Stack & Stack::operator = (const Stack & S)
+{
+    if (this != &S)
+    {
+        this->Max_size = S.Max_size;
+        this->Stackpointer = S.Stackpointer;
+        Elem buf;
+        int size = S.Get_size();
+        delete [] this->Array;
+        this->Array = new Elem[Max_size];
+        for (int i = 0; i < size; ++i)
+        {
+            this->Array[i].num = S.Array[i].num;
+            this->Array[i].str = S.Array[i].str;
+        }
+    }
+    return *this;
+}
+Stack & Stack::operator = (Stack && S) noexcept
+{
+    int buf = Stackpointer;
+    Stackpointer = S.Stackpointer;
+    S.Stackpointer = buf;
+    buf = Max_size;
+    Max_size = S.Max_size;
+    S.Max_size = buf;
+    Elem* buf_arr = Array;
+    Array = S.Array;
+    S.Array = buf_arr;
+    return *this;
+}
+
 template <typename T>
 int getNum (T &Num)
 {
-    while (!(std::cin >> Num))
+    while (!(std::cin >> Num) || Num == INT32_MIN)
     {
         if (std::cin.eof()) // If we have reached EOF, break of the loop or exit.
             return -1; // End of stream;
@@ -97,12 +161,12 @@ void getStr (std::string & Str) {
     std::cin >> Str;
 }
 
-template <typename T>
-T* Realloc (T* ptr, int size)
+Elem* Realloc (Elem* ptr, int size)
 {
-    T* new_ptr = new T[size + 1];
+    Elem* new_ptr = new Elem[2 * size];
     for (int i = 0; i < size; ++i) {
-        new_ptr[i] = ptr[i];
+        new_ptr[i].num = ptr[i].num;
+        new_ptr[i].str = ptr[i].str;
     }
     delete [] ptr;
     return new_ptr;
@@ -110,55 +174,51 @@ T* Realloc (T* ptr, int size)
 
 void Show_stack (Stack & S)
 {
-    try {
-        Stack S_Copy;
-        int size = S.Get_size();
-        for (int i = 0; i < size; ++i)
-        {
-            Elem buf = S.Pop();
-            S_Copy.Push(buf.num, buf.str);
-        }
-        Border
-        for (int i = 0; i < size; ++i)
-        {
-            Elem buf = S_Copy.Pop();
-            std::cout << "Element №" << i + 1 << '\t' << buf.num << '\t' << buf.str << std::endl;
-            S.Push(buf.num, buf.str);
-        }
-        Border
-    }
-    catch (std::exception &ex)
+    Stack S_Copy;
+    Elem buf;
+    int size = S.Get_size();
+    if (size == 0)
     {
-        std::cout << ex.what() << std::endl;
+        std::cout << "Stack is empty" << std::endl;
+        return;
     }
+    for (int i = 0; i < size; ++i)
+    {
+        S.Pop(buf);
+        S_Copy.Push(buf.num, buf.str);
+    }
+    Border
+    for (int i = 0; i < size; ++i)
+    {
+        S_Copy.Pop(buf);
+        std::cout << "Element №" << i + 1 << '\t' << buf.num << '\t' << buf.str << std::endl;
+        S.Push(buf.num, buf.str);
+    }
+    Border
 }
 void New_Elem (Stack & S)
 {
-    try
+    int Num;
+    std::string Str;
+    std::cout << "Enter a number (the 1st parameter)" << std::endl;
+    getNum(Num);
+    std::cout << "Enter a string (the 2nd parameter)" << std::endl;
+    getStr(Str);
+    if (S.Push(Num, Str))
     {
-        int Num;
-        std::string Str;
-        std::cout << "Enter a number (the 1st parameter)" << std::endl;
-        getNum(Num);
-        std::cout << "Enter a string (the 2nd parameter)" << std::endl;
-        getStr(Str);
-        S.Push(Num, Str);
-    }
-    catch (std::exception &ex)
-    {
-        std::cout << ex.what() << std::endl;
+        std::cout << "Invalid element" << std::endl;
     }
 }
 void Last_Elem (Stack & S)
 {
-    try
+    Elem buf;
+    if (S.Pop(buf))
     {
-        Elem buf = S.Pop();
-        std::cout << "Element №" << S.Get_size() + 1 << '\t' << buf.num << '\t' << buf.str << std::endl;
+        std::cout << "Stack is empty" << std::endl;
     }
-    catch (std::exception &ex)
+    else
     {
-        std::cout << ex.what() << std::endl;
+        std::cout << "Element №" << S.Get_size() + 1 << '\t' << buf.num << '\t' << buf.str << std::endl;
     }
 }
 void Condition_of_stack (Stack & S)
@@ -168,7 +228,8 @@ void Condition_of_stack (Stack & S)
         int cond = S.Check();
         if (cond == 1)
         {
-            std::cout << "Stack is overflow" << std::endl;
+            std::cout << "Stack has " << S.Get_size() << " element(s)" << std::endl;
+            std::cout << "Stack is full" << std::endl;
         }
         if (cond == -1)
         {
@@ -187,35 +248,29 @@ void Condition_of_stack (Stack & S)
 void Delete_all (Stack & S)
 {
     int size = S.Get_size();
+    Elem buf;
     for (int i = 0; i < size; ++i)
     {
-        S.Pop();
+        S.Pop(buf);
     }
     std::cout << "Stack is empty" << std::endl;
+
 }
 void Enter_array (Stack & S)
 {
-    try
+    int size;
+    do
     {
-        int size;
-        std::cout << "Enter a size of a massive" << std::endl;
+        std::cout << "Enter a positive size of a massive" << std::endl;
         getNum(size);
-        if (size <= 0)
-        {
-            throw std::runtime_error ("Size of a massive must be positive");
-        }
-        Elem *array = new Elem[size];
-        for (int i = 0; i < size; ++i) {
-            std::cout << "Enter " << i + 1 << " element of massive" << std::endl;
-            std::cout << "Enter a number" << std::endl;
-            getNum(array[i].num);
-            std::cout << "Enter a string" << std::endl;
-            std::cin >> array[i].str;
-        }
-        S.Set_array(array, size);
+    } while (size <= 0);
+    Elem *array = new Elem[size];
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Enter " << i + 1 << " element of massive" << std::endl;
+        std::cout << "Enter a number" << std::endl;
+        getNum(array[i].num);
+        std::cout << "Enter a string" << std::endl;
+        std::cin >> array[i].str;
     }
-    catch (std::exception &ex)
-    {
-        std::cout << ex.what() << std::endl;
-    }
+    S.Set_array(array, size);
 }
