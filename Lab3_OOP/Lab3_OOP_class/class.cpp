@@ -6,8 +6,7 @@ void Stack::Set_int (int num)
 }
 void Stack::Set_str (std::string & str)
 {
-    std::string buf = std::move(str);
-    Array[Stackpointer].str = buf;
+    Array[Stackpointer].str = std::move(str);
 }
 void Stack::Set_array (Elem *array, int size)
 {
@@ -18,6 +17,10 @@ void Stack::Set_array (Elem *array, int size)
     delete [] array;
 }
 
+std::string Stack::Get_prev_elem ()
+{
+    return Array[Stackpointer].str;
+}
 int Stack::Get_size () const
 {
     return Stackpointer;
@@ -273,4 +276,9 @@ void Enter_array (Stack & S)
         std::cin >> array[i].str;
     }
     S.Set_array(array, size);
+}
+
+void Show_prev_elem (Stack & S)
+{
+    std::cout << S.Get_prev_elem() << std::endl;
 }

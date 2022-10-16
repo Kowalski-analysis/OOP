@@ -45,6 +45,7 @@ public:
     void Set_str (std::string & str);
     void Set_array (Elem *array, int size);
 
+    std::string Get_prev_elem ();
     [[nodiscard]] int Get_size () const;
 
     int Push (int & num, std::string & str);
@@ -72,5 +73,6 @@ void Last_Elem (Stack & S);
 void Condition_of_stack (Stack & S);
 void Delete_all (Stack & S);
 void Enter_array (Stack & S);
+void Show_prev_elem (Stack & S);
 
 #endif //LAB3_OOP_CLASS_H

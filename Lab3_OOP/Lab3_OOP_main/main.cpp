@@ -47,7 +47,6 @@ int main() {
             {
 //                std::cout << S << std::endl;
 //                Stack A(S);
-//                Stack A;
 //                Elem E;
 //                E.num = 123;
 //                E.str = "XXX";
@@ -59,7 +58,7 @@ int main() {
 //                E = S--;
 //                std::cout << E.str << '\t' << E.num << std::endl;
 //                Show_stack(A);
-
+                Show_prev_elem (S);
             }
             default: {
                 break;
