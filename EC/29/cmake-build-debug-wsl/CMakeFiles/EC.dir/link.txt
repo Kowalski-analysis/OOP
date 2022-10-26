@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/EC.dir/main.cpp.o CMakeFiles/EC.dir/planty_symbols.cpp.o CMakeFiles/EC.dir/my_func.cpp.o CMakeFiles/EC.dir/anliplagiat.cpp.o CMakeFiles/EC.dir/antiplagiat_dialog.cpp.o -o EC 

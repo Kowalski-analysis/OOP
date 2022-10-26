@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/Lab3_OOP_testing.dir/testing.cpp.o -o Lab3_OOP_testing  ../lib/libgtest_maind.a ../Lab3_OOP_class/libLab3_OOP_class.a ../lib/libgtestd.a 

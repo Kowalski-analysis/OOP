@@ -277,7 +277,6 @@ void Enter_array (Stack & S)
     }
     S.Set_array(array, size);
 }
-
 void Show_prev_elem (Stack & S)
 {
     std::cout << S.Get_prev_elem() << std::endl;

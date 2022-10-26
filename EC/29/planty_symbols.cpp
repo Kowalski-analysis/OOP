@@ -3,7 +3,13 @@
 namespace nameSpacePlantySymbols {
 
     int planty_symbols::get_real_power() const { return real_power; }
+<<<<<<< HEAD
     int planty_symbols::get_real_capacity() const { return capacity; }
+=======
+
+    int planty_symbols::get_real_capacity() const { return capacity; }
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     std::string planty_symbols::get_symbols() const {
         std::string s1;
         if (symbols != nullptr) {
@@ -13,6 +19,10 @@ namespace nameSpacePlantySymbols {
         }
         return s1;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     void planty_symbols::insert_symbol(char insert_symbol) {
         if (res_search(insert_symbol) == -1) {
             if (real_power == capacity) {
@@ -27,6 +37,10 @@ namespace nameSpacePlantySymbols {
             real_power++;
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     void planty_symbols::insert_symbols(std::string &insert_symbols) {
         int size = insert_symbols.length();
         for (int i = 0; i < size; ++i) {
@@ -44,6 +58,10 @@ namespace nameSpacePlantySymbols {
             }
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     int planty_symbols::res_search(char a) const {
         for (int i = 0; i < real_power; ++i) {
             if (*(symbols + i) == a) {
@@ -53,6 +71,10 @@ namespace nameSpacePlantySymbols {
         return -1;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     planty_symbols operator|(const planty_symbols &p1, const planty_symbols &p2) {
         planty_symbols my_union;
         size_t p1_real_power = p1.get_real_power(), p2_real_power = p2.get_real_power();
@@ -74,6 +96,11 @@ namespace nameSpacePlantySymbols {
         }
         return my_union;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     planty_symbols operator&(const planty_symbols &p1, const planty_symbols &p2) {
         planty_symbols my_intersect;
         size_t k = 0;
@@ -95,6 +122,11 @@ namespace nameSpacePlantySymbols {
         }
         return my_intersect;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     planty_symbols operator/(const planty_symbols &p1, const planty_symbols &p2) {
         planty_symbols my_except;
         std::string s1 = p1.get_symbols();
@@ -113,6 +145,10 @@ namespace nameSpacePlantySymbols {
         }
         return my_except;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     void operator|=(planty_symbols &p1, const planty_symbols &p2) {
         size_t p1_real_power = p1.get_real_power(), p2_real_power = p2.get_real_power();
         size_t max_size = p1_real_power + p2_real_power;
@@ -138,6 +174,10 @@ namespace nameSpacePlantySymbols {
         }
 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     void operator&=(planty_symbols &p1, const planty_symbols &p2) {
         size_t k = 0;
         size_t p1_real_power = p1.get_real_power(), p2_real_power = p2.get_real_power();
@@ -160,6 +200,10 @@ namespace nameSpacePlantySymbols {
 
 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     void operator/=(planty_symbols &p1, const planty_symbols &p2) {
         std::string s1 = p1.get_symbols();
         std::string s2 = p2.get_symbols();
@@ -178,6 +222,11 @@ namespace nameSpacePlantySymbols {
             p1.insert_symbol(intersect[i]);
         }
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2338b367243b3522dbb19d96f1f438749ca25e5e
     std::ostream &operator<<(std::ostream &os, const planty_symbols &my_planty) {
         if (my_planty.get_real_power() == 0) {
             os << "empty planty" << std::endl;

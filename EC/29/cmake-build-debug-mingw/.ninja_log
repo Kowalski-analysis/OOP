@@ -1,0 +1,5 @@
+# ninja log v5
+11	1020	6881807181883039	CMakeFiles/EC.dir/my_func.cpp.obj	cbbb922830bdf325
+1144	1279	6881807184929618	EC.exe	e42440cf97e37446
+7	1110	6881807183315567	CMakeFiles/EC.dir/planty_symbols.cpp.obj	a61f73e13e52eba9
+3	1144	6881807183658995	CMakeFiles/EC.dir/main.cpp.obj	56d6d532883aec53
