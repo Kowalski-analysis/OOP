@@ -1,3 +1,0 @@
-F:/CLion 2022.2.4/Progi/OOP/Lab1_OOP/cmake-build-debug/CMakeFiles/OOP_Lab1.dir
-F:/CLion 2022.2.4/Progi/OOP/Lab1_OOP/cmake-build-debug/CMakeFiles/edit_cache.dir
-F:/CLion 2022.2.4/Progi/OOP/Lab1_OOP/cmake-build-debug/CMakeFiles/rebuild_cache.dir

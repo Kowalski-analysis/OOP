@@ -1,2 +1,0 @@
-/usr/bin/ar qc libLab3_OOP_class.a CMakeFiles/Lab3_OOP_class.dir/class.cpp.o
-/usr/bin/ranlib libLab3_OOP_class.a

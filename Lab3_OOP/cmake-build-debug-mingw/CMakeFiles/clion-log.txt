@@ -1,5 +1,0 @@
-"F:\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=F:/CLion 2022.2.4/bin/ninja/win/ninja.exe" -G Ninja -S "F:\CLion 2022.2.4\Progi\OOP\Lab3_OOP" -B "F:\CLion 2022.2.4\Progi\OOP\Lab3_OOP\cmake-build-debug-mingw"
--- Could NOT find Python (missing: Python_EXECUTABLE Interpreter) 
--- Configuring done
--- Generating done
--- Build files have been written to: F:/CLion 2022.2.4/Progi/OOP/Lab3_OOP/cmake-build-debug-mingw

@@ -1,3 +1,0 @@
-F:/CLion 2022.2.4/Progi/EC/29/cmake-build-debug-mingw/CMakeFiles/EC.dir
-F:/CLion 2022.2.4/Progi/EC/29/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
-F:/CLion 2022.2.4/Progi/EC/29/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir

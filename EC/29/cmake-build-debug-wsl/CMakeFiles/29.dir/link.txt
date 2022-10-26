@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/29.dir/main.cpp.o CMakeFiles/29.dir/planty_symbols.cpp.o CMakeFiles/29.dir/my_func.cpp.o -o 29 
