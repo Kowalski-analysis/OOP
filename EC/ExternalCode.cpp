@@ -1,4 +1,4 @@
-#include "anliplagiat.h"
+#include "ExternalCode.h"
 
 std::fstream FOpen (std::string & path, int flag)
 {
@@ -48,6 +48,7 @@ bool Check_all (nameSpacePlantySymbols::planty_symbols & P1, nameSpacePlantySymb
     i += Check_repeat(P2, str);
     i += Check_special(P2);
     i += Check_invalid(P2);
+    i += Check_size(P2);
     if (i != 0)
     {
         return true;
@@ -86,6 +87,14 @@ int Check_invalid (nameSpacePlantySymbols::planty_symbols & P2)
     nameSpacePlantySymbols::planty_symbols P3("[]{}`\"'");
     P3 = P3 & P2;
     if (P3.get_real_power() != 0)
+    {
+        return 1;
+    }
+    return 0;
+}
+int Check_size (nameSpacePlantySymbols::planty_symbols & P2)
+{
+    if (P2.get_real_power() < 10)
     {
         return 1;
     }

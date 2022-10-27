@@ -1,6 +1,5 @@
-#include "antiplagiat_dialog.h"
+#include "ExternalCode_dialog.h"
 #include <limits>
-#include <filesystem>
 
 int Dialog (const char *msgs[], int n)
 {
@@ -50,18 +49,10 @@ void Menu ()
                 std::fstream fout = FOpen(path1, 2);
                 std::cout << "Enter a login" << std::endl;
                 std::cin >> str1;
-                str1 += ' ';
                 std::cout << "Enter a password" << std::endl;
                 std::cin >> str2;
-                str2 += ' ';
                 FWrite(fout, str1, str2);
                 break;
-            }
-            case 3:
-            {
-                std::string path = "/path/to/directory";
-                for (const auto & entry : std::filesystem::directory_iterator(path))
-                    std::cout << entry.path() << std::endl;
             }
             default: {
                 break;

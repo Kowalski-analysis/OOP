@@ -14,6 +14,7 @@ int Check_login (nameSpacePlantySymbols::planty_symbols & P1, nameSpacePlantySym
 int Check_repeat (nameSpacePlantySymbols::planty_symbols & P2, std::string & str);
 int Check_special (nameSpacePlantySymbols::planty_symbols & P2);
 int Check_invalid (nameSpacePlantySymbols::planty_symbols & P2);
+int Check_size (nameSpacePlantySymbols::planty_symbols & P2);
 
 void Result (std::fstream & fin, std::fstream & fout);
 

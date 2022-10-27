@@ -1,7 +1,7 @@
 #ifndef PART3_ANTIPLAGIAT_DIALOG_H
 #define PART3_ANTIPLAGIAT_DIALOG_H
 
-#include "anliplagiat.h"
+#include "ExternalCode.h"
 
 int Dialog (const char *msgs[], int n);
 

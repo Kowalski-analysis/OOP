@@ -1,4 +1,4 @@
-#include "antiplagiat_dialog.h"
+#include "ExternalCode_dialog.h"
 
 int main()
 {
