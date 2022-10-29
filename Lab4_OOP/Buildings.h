@@ -3,41 +3,57 @@
 
 typedef struct Coordinates
 {
-    int x;
-    int y;
-    int length_x;
-    int length_y;
+    int x = 0;
+    int y = 0;
+    int length_x = 0;
+    int length_y = 0;
 } Coordinates;
 
-class Build
+class Building
 {
-private:
+protected:
     int hp;
+    int max_hp;
     Coordinates Location;
     int level;
+    int level_max;
 public:
-    void TakeDamage();
+    Building ();
+    Building (int x, int y);
+    void Heal ();
+    void TakeDamage (int damage);
+    virtual int LevelUp () = 0;
+    void Destroy ();
 };
-class Castle : Build
+class Castle : public Building
 {
-
+public:
+    Castle();
+    int LevelUp() override;
 };
-class Tower : Build
+class Tower : public Building
 {
 private:
     int damage;
     double reload;
 public:
-    void DealDamage();
+    Tower();
+    [[nodiscard]] int DealDamage () const;
+    int LevelUp() override;
 };
-class Wall : Build
+class Wall : public Building
 {
-
+public:
+    int LevelUp() override;
 };
-class Spawner : Build
+class Spawner : public Building
 {
 private:
+    int count_troop;
     double reload;
+public:
+    Spawner();
+    int LevelUp() override;
 };
 
 #endif //LAB4_OOP_BUILDINGS_H

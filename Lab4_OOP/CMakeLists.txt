@@ -3,4 +3,11 @@ project(Lab4_OOP)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Lab4_OOP main.cpp "Entities .cpp" "Entities .h" Buildings.cpp Buildings.h)
+add_executable(Lab4_OOP main.cpp World.cpp World.h Entities.cpp Entities.h Buildings.cpp Buildings.h)
+
+set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_DIR F:/SFML/lib/cmake/SFML)
+find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
+
+include_directories(F:/SFML/include/SFML)
+target_link_libraries(Lab4_OOP sfml-system sfml-window sfml-graphics sfml-audio)

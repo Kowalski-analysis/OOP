@@ -4,13 +4,13 @@
 class Warrior
 {
 private:
-    int HP;
+    int hp;
     double velocity;
     int damage;
     int level;
 public:
-    void DealDamage();
-    void TakeDamage();
+    [[nodiscard]] int DealDamage() const;
+    void TakeDamage(int damage);
 };
 class Knight : Warrior
 {
