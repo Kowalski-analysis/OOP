@@ -4,7 +4,7 @@ int Warrior::DealDamage() const
 {
     return damage;
 }
-void Warrior::TakeDamage(int damage)
+void Warrior::TakeDamage(int _damage)
 {
     if (this->hp <= damage)
     {
@@ -13,6 +13,13 @@ void Warrior::TakeDamage(int damage)
     else
     {
         this->hp -= damage;
+    }
+}
+void Warrior::Die()
+{
+    if (hp <= 0)
+    {
+
     }
 }
 

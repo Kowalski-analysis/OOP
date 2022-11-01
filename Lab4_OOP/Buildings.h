@@ -1,6 +1,9 @@
 #ifndef LAB4_OOP_BUILDINGS_H
 #define LAB4_OOP_BUILDINGS_H
 
+#include <queue>
+#include "Entities.h"
+
 typedef struct Coordinates
 {
     int x = 0;
@@ -36,6 +39,7 @@ class Tower : public Building
 private:
     int damage;
     double reload;
+    std::queue <Warrior &> targets;
 public:
     Tower();
     [[nodiscard]] int DealDamage () const;

@@ -21,5 +21,9 @@ void Cell::SetUnlock()
 
 World::World()
 {
-
+    field.reserve(30);
+    for (int i = 0; i < 30; ++i)
+    {
+        field[i].reserve(30);
+    }
 }
