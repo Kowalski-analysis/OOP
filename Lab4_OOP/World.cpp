@@ -1,29 +1,59 @@
 #include "World.h"
 
-Cell::Cell() : x(0), y(0), lock(false), distance(0)
-{}
-double Cell::Distance(Cell &Target)
+Cell::Cell () : _x(0), _y(0), _lock(false), _distance()
+{
+}
+Cell::Cell (int x, int y, bool lock) : _x(x), _y(y), _lock(lock)
+{
+    _distance = abs(x) + abs(y);
+}
+void Cell::SetX (int x)
+{
+    _x = x;
+}
+void Cell::SetY (int y)
+{
+    _y = y;
+}
+void Cell::SetLock ()
+{
+    _lock = true;
+}
+void Cell::SetUnlock ()
+{
+    _lock = false;
+}
+void Cell::SetDistance ()
 {
 
 }
-double Cell::GetDistance() const
+int Cell::GetX () const
 {
-    return distance;
+    return _x;
 }
-void Cell::SetLock()
+int Cell::GetY () const
 {
-    lock = true;
+    return _y;
 }
-void Cell::SetUnlock()
+int Cell::GetDistance () const
 {
-    lock = false;
+    return _distance;
+}
+int Cell::ManhattanDistance() const
+{
+    return abs(_x) + abs(_y);
 }
 
-World::World()
+World::World (int size)
 {
-    field.reserve(30);
-    for (int i = 0; i < 30; ++i)
+    _size = size;
+    _field.reserve(size);
+    for (int i = 0; i < size; ++i)
     {
-        field[i].reserve(30);
+        _field[i].reserve(size);
     }
+}
+void World::DistanceUpdate ()
+{
+
 }
