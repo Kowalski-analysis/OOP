@@ -43,6 +43,10 @@ int Cell::ManhattanDistance() const
 {
     return abs(_x) + abs(_y);
 }
+void Cell::A_star()
+{
+    std::priority_queue <std::pair <int, int>> frontier;
+}
 
 World::World (int size)
 {

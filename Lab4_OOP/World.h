@@ -2,6 +2,7 @@
 #define LAB4_OOP_WORLD_H
 #include <map>
 #include <vector>
+#include <queue>
 
 class Warrior;
 class Building;
@@ -13,6 +14,8 @@ private:
     int _y;
     bool _lock;
     int _distance;
+    int _id;
+    Cell* _go_to;
 public:
     Cell ();
     Cell (int x, int y, bool lock);
@@ -25,6 +28,7 @@ public:
     [[nodiscard]] int GetY () const;
     [[nodiscard]] int GetDistance () const;
     [[nodiscard]] int ManhattanDistance () const;
+    void A_star ();
 };
 
 class World
