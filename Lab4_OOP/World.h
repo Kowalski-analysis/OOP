@@ -7,6 +7,7 @@
 class Warrior;
 class Building;
 class World;
+class Tower;
 
 class Cell
 {
@@ -14,7 +15,6 @@ private:
     int _x;
     int _y;
     bool _lock;
-    int _distance;
 //    int _id;
     Cell* _go_to;
 public:
@@ -22,16 +22,15 @@ public:
     Cell (int x, int y);
     void SetX (int x);
     void SetY (int y);
-    void SetDistance ();
     void SetLock ();
     void SetUnlock ();
+    void SetWay (Cell & to);
 //    [[nodiscard]] int GetId () const;
     [[nodiscard]] int GetX () const;
     [[nodiscard]] int GetY () const;
-    [[nodiscard]] int GetDistance () const;
-    [[nodiscard]] int ManhattanDistance () const;
+    [[nodiscard]] int ManhattanDistance (Cell & target) const;
     std::vector <Cell*> GetNeighbors (World & world) const;
-    void A_star (World & world);
+    void A_star (World & world, Cell & target);
 };
 
 class World
@@ -41,10 +40,11 @@ private:
     std::vector <std::vector <Cell*>> _field;
     std::map <int, Building*> _buildings;
     std::map <int, Warrior*> _entities;
-    friend std::vector <Cell*> Cell::GetNeighbors (World & world) const;
-//    friend class Cell;
 public:
     explicit World (int size);
+    std::vector <std::vector <Cell*>> GetField ();
+    std::map <int, Building*> GetBuildings ();
+    std::map <int, Warrior*> GetEntities ();
     void DistanceUpdate ();
 };
 

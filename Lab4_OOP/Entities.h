@@ -1,5 +1,10 @@
 #ifndef LAB4_OOP_ENTITIES_H
 #define LAB4_OOP_ENTITIES_H
+#include <ctime>
+#include <iostream>
+
+class Cell;
+class Building;
 
 class Warrior
 {
@@ -8,31 +13,32 @@ protected:
     double _velocity;
     int _damage;
     int _level;
+    Cell* _next_cell;
 public:
-    Warrior();
-    void Die();
-    virtual int DealDamage() = 0;
+    Warrior ();
+    [[nodiscard]] int GetHp () const;
+    [[nodiscard]] int GetDamage () const;
+    Cell* GetNextCell ();
+    void Die ();
+    void DealDamage (Building & building) const;
     void TakeDamage (int damage);
     virtual int LevelUp () = 0;
 };
 class Knight : Warrior
 {
 public:
-    void AvoidDamage();
+    static int AvoidDamage ();
     int LevelUp () override;
-    int DealDamage() override;
 };
 class Juggernaut : Warrior
 {
 public:
     int LevelUp () override;
-    int DealDamage() override;
 };
 class Aviation : Warrior
 {
 public:
     int LevelUp () override;
-    int DealDamage() override;
 };
 class Hero : Warrior
 {
@@ -41,7 +47,6 @@ private:
 public:
     Hero();
     int LevelUp () override;
-    int DealDamage() override;
 };
 
 #endif //LAB4_OOP_ENTITIES_H

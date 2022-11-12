@@ -1,12 +1,11 @@
 #include "World.h"
 
-Cell::Cell () : _x(0), _y(0), _lock(false), _distance()
+Cell::Cell () : _x(0), _y(0), _lock(false)
 {
-
+    _go_to = nullptr;
 }
 Cell::Cell (int x, int y) : _x(x), _y(y), _lock(false)
 {
-    _distance = abs(x) + abs(y);
     _go_to = nullptr;
 }
 void Cell::SetX (int x)
@@ -17,10 +16,6 @@ void Cell::SetY (int y)
 {
     _y = y;
 }
-void Cell::SetDistance ()
-{
-
-}
 void Cell::SetLock ()
 {
     _lock = true;
@@ -29,10 +24,16 @@ void Cell::SetUnlock ()
 {
     _lock = false;
 }
+void Cell::SetWay (Cell & to)
+{
+    _go_to = &to;
+}
+
 //int Cell::GetId() const
 //{
 //    return _id;
 //}
+
 int Cell::GetX () const
 {
     return _x;
@@ -41,13 +42,9 @@ int Cell::GetY () const
 {
     return _y;
 }
-int Cell::GetDistance () const
+int Cell::ManhattanDistance (Cell & target) const
 {
-    return _distance;
-}
-int Cell::ManhattanDistance() const
-{
-    return abs(_x) + abs(_y);
+    return abs(_x - target.GetX()) + abs(_y - target.GetY());
 }
 std::vector <Cell*> Cell::GetNeighbors (World & world) const
 {
@@ -56,15 +53,15 @@ std::vector <Cell*> Cell::GetNeighbors (World & world) const
     {
         for (int j = _y - 1; j <= _y + 1; j += 2)
         {
-            if (!world._field[i][j]->_lock)
+            if (!(world.GetField())[i][j]->_lock)
             {
-                neighbors.push_back(world._field[i][j]);
+                neighbors.push_back((world.GetField())[i][j]);
             }
         }
     }
     return neighbors;
 }
-void Cell::A_star (World & world)
+void Cell::A_star (World & world, Cell & target)
 {
     std::priority_queue <std::pair <int, Cell*>, std::vector <std::pair <int, Cell*>>, std::greater<>> frontier;
     std::map <Cell*, Cell*> came_from;
@@ -75,21 +72,29 @@ void Cell::A_star (World & world)
     while (!frontier.empty())
     {
         std::pair current = frontier.top();
-        if (current.second->_x == 0 && current.second->_y == 0)
+        if (current.second == &target)
         {
             break;
         }
-        for (Cell* next : this->GetNeighbors(world))
+        for (Cell* next : current.second->GetNeighbors(world))
         {
             int cost = cost_so_far[current.second];
             if (!cost_so_far.count(next) || cost < cost_so_far[next])
             {
                 cost_so_far[next] = cost;
-                int priority = cost + next->ManhattanDistance();
+                int priority = cost + next->ManhattanDistance(target);
                 frontier.emplace(priority, next);
                 came_from[next] = current.second;
             }
         }
+    }
+    Cell* to = &target;
+    Cell* from = came_from[&target];
+    while (to != this)
+    {
+    from->SetWay(*to);
+    to = from;
+    from = came_from[from];
     }
 }
 
@@ -111,12 +116,34 @@ void Cell::A_star (World & world)
 
 World::World (int size)
 {
-    _size = size;
-    _field.reserve(2 * size + 1);
-    for (int i = 0; i < 2 * size + 1; ++i)
+    _size = size + 2;
+    _field.reserve(size + 2);
+    for (int i = 0; i < size + 2; ++i)
     {
-        _field[i].reserve(2 * size + 1);
+        _field[i].reserve( size + 2);
     }
+    for (int i = 0; i < size + 2; ++i) {
+        for (int j = 0; j < size + 2; ++j) {
+            Cell new_cell(i, j);
+            if (i == 0 || j == 0 || i == size + 1 || j == size + 1)
+            {
+                new_cell.SetLock();
+            }
+            _field[i][j] = &new_cell;
+        }
+    }
+}
+std::vector <std::vector <Cell*>> World::GetField ()
+{
+    return _field;
+}
+std::map <int, Building*> World::GetBuildings ()
+{
+    return _buildings;
+}
+std::map <int, Warrior*> World::GetEntities ()
+{
+    return _entities;
 }
 void World::DistanceUpdate ()
 {

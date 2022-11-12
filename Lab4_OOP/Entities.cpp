@@ -1,4 +1,5 @@
 #include "Entities.h"
+#include "Buildings.h"
 
 Warrior::Warrior ()
 {
@@ -6,10 +7,30 @@ Warrior::Warrior ()
     _damage = 10;
     _level = 1;
     _velocity = 10.0;
+    _next_cell = nullptr;
 }
-int Warrior::DealDamage ()
+int Warrior::GetHp () const
+{
+    return _hp;
+}
+int Warrior::GetDamage () const
 {
     return _damage;
+}
+Cell* Warrior::GetNextCell ()
+{
+    return _next_cell;
+}
+void Warrior::Die ()
+{
+    if (_hp <= 0)
+    {
+
+    }
+}
+void Warrior::DealDamage (Building & building) const
+{
+    building.TakeDamage(_damage);
 }
 void Warrior::TakeDamage (int damage)
 {
@@ -22,23 +43,14 @@ void Warrior::TakeDamage (int damage)
         this->_hp -= damage;
     }
 }
-void Warrior::Die ()
+
+int Knight::AvoidDamage ()
 {
-    if (_hp <= 0)
-    {
-
-    }
-}
-
-void Knight::AvoidDamage ()
-{
-
+    srand(time(nullptr));
+    int a = rand() % 100;
+    return a >= 75;
 }
 int Knight::LevelUp ()
-{
-    return 0;
-}
-int Knight::DealDamage ()
 {
     return 0;
 }
@@ -47,16 +59,8 @@ int Juggernaut::LevelUp ()
 {
     return 0;
 }
-int Juggernaut::DealDamage ()
-{
-    return 0;
-}
 
 int Aviation::LevelUp ()
-{
-    return 0;
-}
-int Aviation::DealDamage ()
 {
     return 0;
 }
@@ -66,10 +70,6 @@ Hero::Hero ()
     _radius_aura = 5;
 }
 int Hero::LevelUp ()
-{
-    return 0;
-}
-int Hero::DealDamage ()
 {
     return 0;
 }

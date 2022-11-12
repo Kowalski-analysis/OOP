@@ -3,6 +3,8 @@
 #include <queue>
 
 class Warrior;
+class World;
+class Cell;
 
 typedef struct Coordinates
 {
@@ -15,11 +17,12 @@ typedef struct Coordinates
 class Building
 {
 protected:
-    int hp;
-    int max_hp;
+    int _hp;
+    int _max_hp;
     Coordinates Location;
-    int level;
-    int level_max;
+    Cell* _location;
+    int _level;
+    int _level_max;
 public:
     Building ();
     Building (int x, int y);
@@ -37,27 +40,31 @@ public:
 class Tower : public Building
 {
 private:
-    int damage;
-    double reload;
-    std::queue <Warrior*> targets;
+    int _damage;
+    int _radius;
+    double _reload;
+    std::priority_queue <std::pair <int, Warrior*>, std::vector <std::pair <int, Warrior*>>, std::greater<>> _targets;
 public:
     Tower ();
-    [[nodiscard]] int DealDamage () const;
+    [[nodiscard]] int GetDamage () const;
+    [[nodiscard]] int GetRadius () const;
+    void FindTargets (World & world);
+    void DealDamage (Warrior & warrior) const;
     int LevelUp () override;
 };
 class Wall : public Building
 {
 public:
-    int LevelUp() override;
+    int LevelUp () override;
 };
 class Spawner : public Building
 {
 private:
-    int count_troop;
-    double reload;
+    int _count_troop;
+    double _reload;
 public:
-    Spawner();
-    int LevelUp() override;
+    Spawner ();
+    int LevelUp () override;
 };
 
 #endif //LAB4_OOP_BUILDINGS_H
