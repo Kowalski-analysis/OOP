@@ -15,8 +15,10 @@ private:
     int _x;
     int _y;
     bool _lock;
+    bool _air_lock;
 //    int _id;
     Cell* _go_to;
+    Cell* _air_go_to;
 public:
     Cell ();
     Cell (int x, int y);
@@ -26,6 +28,8 @@ public:
     void SetUnlock ();
     void SetWay (Cell & to);
 //    [[nodiscard]] int GetId () const;
+    [[nodiscard]] Cell* GetNextCell () const;
+    [[nodiscard]] Cell* GetAirNextCell () const;
     [[nodiscard]] int GetX () const;
     [[nodiscard]] int GetY () const;
     [[nodiscard]] int ManhattanDistance (Cell & target) const;

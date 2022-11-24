@@ -42,6 +42,14 @@ int Cell::GetY () const
 {
     return _y;
 }
+Cell* Cell::GetNextCell() const
+{
+    return _go_to;
+}
+Cell* Cell::GetAirNextCell() const
+{
+    return _air_go_to;
+}
 int Cell::ManhattanDistance (Cell & target) const
 {
     return abs(_x - target.GetX()) + abs(_y - target.GetY());

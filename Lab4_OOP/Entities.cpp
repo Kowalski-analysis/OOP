@@ -7,7 +7,7 @@ Warrior::Warrior ()
     _damage = 10;
     _level = 1;
     _velocity = 10.0;
-    _next_cell = nullptr;
+    _cur_cell = nullptr;
 }
 int Warrior::GetHp () const
 {
@@ -17,9 +17,9 @@ int Warrior::GetDamage () const
 {
     return _damage;
 }
-Cell* Warrior::GetNextCell ()
+Cell* Warrior::GetCurCell ()
 {
-    return _next_cell;
+    return _cur_cell;
 }
 void Warrior::Die ()
 {
@@ -43,8 +43,12 @@ void Warrior::TakeDamage (int damage)
         this->_hp -= damage;
     }
 }
+void Warrior::Move (Cell & target)
+{
+    _cur_cell = &target;
+}
 
-int Knight::AvoidDamage ()
+bool Knight::AvoidDamage ()
 {
     srand(time(nullptr));
     int a = rand() % 100;
