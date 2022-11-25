@@ -78,7 +78,7 @@ void Tower::FindTargets (World & world)
 {
     for (std::pair <int, Warrior*> ent : world.GetEntities())
     {
-        int dist = ent.second->GetCurCell()->GetNextCell()->ManhattanDistance(*_location);
+        int dist = ent.second->GetCurCell()->GetNextCell()->GetManhattanDistance(*_location);
         if (dist <= _radius)
         {
             _targets.emplace(dist + ent.second->GetHp(), ent.second);
