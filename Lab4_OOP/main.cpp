@@ -4,49 +4,8 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "My window", sf::Style::Fullscreen);
-
-//    sf::Image img;
-//    img.loadFromFile("../Textures/Land234.png");
-//
-//    sf::Texture tex;
-//    tex.loadFromImage(img);
-//
-//    sf::Sprite spt;
-//    spt.setTexture(tex);
-//
-//    sf::Image img1;
-//    img1.loadFromFile("../Textures/Castle.png");
-//
-//    sf::Texture tex1;
-//    tex1.loadFromImage(img1);
-//
-//    sf::Sprite spt1;
-//    spt1.setTexture(tex1);
-//
-//    std::string map_land[24] = {
-//            "111111111111111111111",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "1                   1",
-//            "                    1",
-//            "111111111111111111111",
-//    };
-    World W(19);
+    World W(8);
+//    W.GetField()[1][1]->A_star(W, *W.GetField()[1][3]);
     while (window.isOpen())
     {
         sf::Event event {};
@@ -57,36 +16,8 @@ int main()
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))
                 window.close();
         }
-
         window.clear();
-//        for (int i = 0; i < map_land->size(); ++i)
-//        {
-//            float x = 0;
-//            float y = (float)i * 46;
-//            if (i % 2 == 1)
-//            {
-//                x += 90;
-//            }
-//            for (char j : map_land[i])
-//            {
-//                spt.setPosition(x, y);
-//                x += 180;
-//                if (j == '.')
-//                {
-//                    continue;
-//                }
-//                if (j == '1')
-//                {
-//                    spt.setTextureRect(sf::IntRect(0,0,185,98));
-//                }
-//                if (j == ' ')
-//                {
-//                    spt.setTextureRect(sf::IntRect(185,0,185,98));
-//                }
-//                window.draw(spt);
-//            }
-//        }
-
+        W.ReadMap();
         W.DrawLand(window);
         window.display();
     }
