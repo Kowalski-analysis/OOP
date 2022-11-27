@@ -22,7 +22,7 @@ public:
     void Die ();
     void DealDamage (Building & building) const;
     void TakeDamage (int damage);
-    void Move (Cell & target);
+    void Move ();
     virtual int LevelUp () = 0;
 };
 class Knight : Warrior

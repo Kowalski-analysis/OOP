@@ -1,5 +1,6 @@
 #include "Entities.h"
 #include "Buildings.h"
+#include "World.h"
 
 Warrior::Warrior ()
 {
@@ -43,9 +44,9 @@ void Warrior::TakeDamage (int damage)
         this->_hp -= damage;
     }
 }
-void Warrior::Move (Cell & target)
+void Warrior::Move ()
 {
-    _cur_cell = &target;
+    _cur_cell = _cur_cell->GetNextCell();
 }
 
 bool Knight::AvoidDamage ()

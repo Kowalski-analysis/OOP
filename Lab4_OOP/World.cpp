@@ -1,16 +1,28 @@
 #include "World.h"
 
-std::string map_land[10] = {
-        "1111111111",
-        "1111111111",
-        "1        1",
-        "1        1",
-        "1        1",
-        "1        1",
-        "1        1",
-        "1        1",
-        "1111111111",
-        "1111111111",
+std::string map_land[22] = {
+        "hhhhaahhhh",
+        "hbbbbbbbbh",
+        "honoabbbch",
+        "homoccccch",
+        "hojoffffch",
+        "oioiiaaaah",
+        "hcceeeecch",
+        "hcccccccch",
+        "hdddggdddh",
+        "hhheeeehhh",
+        "hhhhaahhhh",
+        "hbbbbbbbbh",
+        "honoabbbch",
+        "homoccccch",
+        "hojoffffch",
+        "oioiiaaaah",
+        "hcceeeecch",
+        "hcccccccch",
+        "hdddggdddh",
+        "hhheeeehhh",
+        "hojoffffch",
+        "oioiiaaaah",
 };
 
 Cell::Cell () : _x(0), _y(0), _lock(false), _air_lock(false)
@@ -76,16 +88,20 @@ int Cell::GetManhattanDistance (Cell & target) const
 {
     return abs(_x - target.GetX()) + abs(_y - target.GetY());
 }
-std::vector <Cell*> Cell::GetNeighbors (World & world, std::vector <Cell*> & neighbors)
+std::vector <Cell*> Cell::GetNeighbors (World & world, std::vector <Cell*> & neighbors) const
 {
-    for (int i = _x - 1; i <= _x + 1 ; i += 2)
+    for (int i = _x - 1; i <= _x + 1; i += 2)
     {
-        for (int j = _y - 1; j <= _y + 1; j += 2)
+        if (!(world.GetField())[i][_y]->_lock)
         {
-            if (!(world.GetField())[i][j]->_lock)
-            {
-                neighbors.push_back((world.GetField())[i][j]);
-            }
+            neighbors.push_back((world.GetField())[i][_y]);
+        }
+    }
+    for (int i = _y - 1; i <= _y + 1; i += 2)
+    {
+        if (!(world.GetField())[_x][i]->_lock)
+        {
+            neighbors.push_back((world.GetField())[_x][i]);
         }
     }
     return neighbors;
@@ -105,6 +121,7 @@ void Cell::A_star (World & world, Cell & target)
     while (!frontier.empty())
     {
         std::pair current = frontier.top();
+        frontier.pop();
         if (current.second == &target)
         {
             break;
@@ -132,20 +149,21 @@ void Cell::A_star (World & world, Cell & target)
     }
 }
 
-World::World (int size)
+World::World (int size_x, int size_y)
 {
-    _size = size + 2;
-    std::vector <std::vector <Cell*>> new_vec(size + 2);
+    _size_x = size_x + 2;
+    _size_y = size_y + 2;
+    std::vector <std::vector <Cell*>> new_vec(_size_y);
     _field = new_vec;
-    for (int i = 0; i < size + 2; ++i)
+    for (int i = 0; i < _size_y; ++i)
     {
-        std::vector <Cell*> vec(size + 2);
+        std::vector <Cell*> vec(_size_x);
         _field[i] = vec;
     }
-    for (int i = 0; i < size + 2; ++i) {
-        for (int j = 0; j < size + 2; ++j) {
-            Cell* new_cell = new Cell(i, j);
-            if (i == 0 || j == 0 || i == size + 1 || j == size + 1)
+    for (int i = 0; i < _size_y; ++i) {
+        for (int j = 0; j < _size_x; ++j) {
+            Cell* new_cell = new Cell(j, i);
+            if (i == 0 || j == 0 || i == _size_x + 1 || j == _size_y + 1)
             {
                 new_cell->SetLock();
                 new_cell->SetAirLock();
@@ -179,7 +197,7 @@ void World::ReadMap ()
 void World::DrawLand (sf::RenderWindow & window)
 {
     sf::Image img;
-    img.loadFromFile("../Textures/Land234.png");
+    img.loadFromFile("../Textures/Land.png");
 
     sf::Texture tex;
     tex.loadFromImage(img);
@@ -190,8 +208,8 @@ void World::DrawLand (sf::RenderWindow & window)
     {
         for (auto & j : i)
         {
-            float x = (float)j->GetX() * 180;
-            float y = (float)j->GetY() * 46;
+            float x = (float)j->GetX() * 178;
+            float y = (float)j->GetY() * 44;
             if (j->GetY() % 2 == 1)
             {
                 x += 90;
@@ -201,19 +219,13 @@ void World::DrawLand (sf::RenderWindow & window)
             {
                 continue;
             }
-            if (j->GetLandType() == '1')
-            {
-                spt.setTextureRect(sf::IntRect(0,0,185,98));
-            }
-            if (j->GetLandType() == ' ')
-            {
-                spt.setTextureRect(sf::IntRect(185,0,185,98));
-            }
+            int x0 = ((int)j->GetLandType() - 97) * 180 % 1440;
+            int y0 = ((int)j->GetLandType() / 105) * 92;
+            int x1 = 180;
+            int y1 = 92;
+            spt.setTextureRect(sf::IntRect(x0,y0,x1,y1));
             window.draw(spt);
         }
     }
 }
-
-///Ошибка в соседях и возможно в А*
-
 

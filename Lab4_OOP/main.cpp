@@ -4,8 +4,8 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "My window", sf::Style::Fullscreen);
-    World W(8);
-//    W.GetField()[1][1]->A_star(W, *W.GetField()[1][3]);
+    World W(8, 20);
+    W.GetField()[1][1]->A_star(W, *W.GetField()[8][8]);
     while (window.isOpen())
     {
         sf::Event event {};

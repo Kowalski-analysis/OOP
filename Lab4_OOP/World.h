@@ -37,7 +37,7 @@ public:
     [[nodiscard]] int GetX () const;
     [[nodiscard]] int GetY () const;
     [[nodiscard]] int GetManhattanDistance (Cell & target) const;
-    std::vector <Cell*> GetNeighbors (World & world, std::vector <Cell*> & neighbors);
+    std::vector <Cell*> GetNeighbors (World & world, std::vector <Cell*> & neighbors) const;
     [[nodiscard]] char GetLandType () const;
     void A_star (World & world, Cell & target);
 };
@@ -45,12 +45,13 @@ public:
 class World
 {
 private:
-    int _size;
+    int _size_x;
+    int _size_y;
     std::vector <std::vector <Cell*>> _field;
     std::map <int, Building*> _buildings;
     std::map <int, Warrior*> _entities;
 public:
-    explicit World (int size);
+    World (int size_x, int size_y);
     std::vector <std::vector <Cell*>> & GetField ();
     std::map <int, Building*> & GetBuildings ();
     std::map <int, Warrior*> & GetEntities ();
