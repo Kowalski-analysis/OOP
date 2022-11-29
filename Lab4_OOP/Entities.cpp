@@ -26,7 +26,7 @@ void Warrior::Die (World & world)
 {
     if (_hp <= 0)
     {
-        world.GetEntities();
+//        world.GetEntities().;
     }
 }
 void Warrior::DealDamage (Building & building) const

@@ -14,6 +14,7 @@ protected:
     Cell* _location;
     int _level;
     int _level_max;
+    char _building_type;
 public:
     Building ();
     Building (int x, int y);
@@ -21,6 +22,9 @@ public:
     void TakeDamage (int damage);
     virtual int LevelUp () = 0;
     void Destroy ();
+    void SetBuildingType ();
+    Cell* GetCurrentCell ();
+    char GetBuildingType ();
 };
 class Castle : public Building
 {

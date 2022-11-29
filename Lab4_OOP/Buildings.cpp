@@ -2,6 +2,31 @@
 #include "World.h"
 #include "Entities.h"
 
+std::string map_buildings[22] = {
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "     a    ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+        "          ",
+};
+
 Building::Building () : _hp(0), _max_hp(0), _level(1), _level_max(5)
 {
 }
@@ -32,6 +57,18 @@ void Building::Destroy ()
 
     }
 }
+void Building::SetBuildingType ()
+{
+    _building_type = map_buildings[GetCurrentCell()->GetY()][GetCurrentCell()->GetX()];
+}
+Cell* Building::GetCurrentCell ()
+{
+    return _location;
+}
+char Building::GetBuildingType ()
+{
+    return _building_type;
+}
 
 Castle::Castle ()
 {
@@ -58,7 +95,7 @@ void Castle::CheckEntities (World & world)
         {
             TakeDamage(i.second->GetDamage());
             i.second->TakeDamage(i.second->GetHp());
-            i.second->Die();
+            i.second->Die(world);
         }
     }
 }

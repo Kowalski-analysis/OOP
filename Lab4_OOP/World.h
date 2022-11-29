@@ -55,8 +55,10 @@ public:
     std::vector <std::vector <Cell*>> & GetField ();
     std::map <int, Building*> & GetBuildings ();
     std::map <int, Warrior*> & GetEntities ();
+    void ReadBuildings ();
     void ReadMap ();
     void DrawLand (sf::RenderWindow & window);
+    void DrawBuildings (sf::RenderWindow & window);
 };
 
 #endif //LAB4_OOP_WORLD_H

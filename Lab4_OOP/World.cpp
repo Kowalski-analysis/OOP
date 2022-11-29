@@ -1,4 +1,5 @@
 #include "World.h"
+#include "Buildings.h"
 
 std::string map_land[22] = {
         "hhhhaahhhh",
@@ -194,8 +195,16 @@ void World::ReadMap ()
         }
     }
 }
+void World::ReadBuildings ()
+{
+    for (auto i : _buildings)
+    {
+        i.second->SetBuildingType();
+    }
+}
 void World::DrawLand (sf::RenderWindow & window)
 {
+    ReadMap();
     sf::Image img;
     img.loadFromFile("../Textures/Land.png");
 
@@ -208,6 +217,10 @@ void World::DrawLand (sf::RenderWindow & window)
     {
         for (auto & j : i)
         {
+            if (j->GetLandType() == ' ')
+            {
+                continue;
+            }
             float x = (float)j->GetX() * 178;
             float y = (float)j->GetY() * 44;
             if (j->GetY() % 2 == 1)
@@ -215,10 +228,6 @@ void World::DrawLand (sf::RenderWindow & window)
                 x += 90;
             }
             spt.setPosition(x, y);
-            if (j->GetLandType() == '.')
-            {
-                continue;
-            }
             int x0 = ((int)j->GetLandType() - 97) * 180 % 1440;
             int y0 = ((int)j->GetLandType() / 105) * 92;
             int x1 = 180;
@@ -226,6 +235,38 @@ void World::DrawLand (sf::RenderWindow & window)
             spt.setTextureRect(sf::IntRect(x0,y0,x1,y1));
             window.draw(spt);
         }
+    }
+}
+void World::DrawBuildings (sf::RenderWindow & window)
+{
+    ReadBuildings();
+    sf::Image img;
+    img.loadFromFile("../Textures/Castle.png");
+
+    sf::Texture tex;
+    tex.loadFromImage(img);
+
+    sf::Sprite spt;
+    spt.setTexture(tex);
+    for (auto i : _buildings)
+    {
+        if (i.second->GetBuildingType() == ' ')
+        {
+            continue;
+        }
+        float x = (float)i.second->GetCurrentCell()->GetX() * 178;
+        float y = (float)i.second->GetCurrentCell()->GetY() * 44;
+        if (i.second->GetCurrentCell()->GetY() % 2 == 1)
+        {
+            x += 90;
+        }
+        spt.setPosition(x,y);
+        int x0 = ((int)i.second->GetBuildingType() - 97) * 360;
+        int y0 = ((int)i.second->GetBuildingType() / 105) * 92;
+        int x1 = 368;
+        int y1 = 897;
+        spt.setTextureRect(sf::IntRect(x0,y0,x1,y1));
+        window.draw(spt);
     }
 }
 
