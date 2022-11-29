@@ -5,20 +5,15 @@
 Building::Building () : _hp(0), _max_hp(0), _level(1), _level_max(5)
 {
 }
-Building::Building (int x, int y) : Building()
-{
-    Location.x = x;
-    Location.y = y;
-}
 void Building::TakeDamage (int damage)
 {
-    if (this->_hp <= damage)
+    if (_hp <= damage)
     {
-        this->_hp = 0;
+        _hp = 0;
     }
     else
     {
-        this->_hp -= damage;
+        _hp -= damage;
     }
 }
 void Building::Heal ()
@@ -42,8 +37,6 @@ Castle::Castle ()
 {
     _hp = 1000;
     _max_hp = 1000;
-    Location.length_x = 2;
-    Location.length_y = 2;
 }
 int Castle::LevelUp ()
 {
@@ -57,12 +50,23 @@ int Castle::LevelUp ()
     return 0;
 }
 
+void Castle::CheckEntities (World & world)
+{
+    for (auto & i : world.GetEntities())
+    {
+        if (i.second->GetCurCell()->GetManhattanDistance(*_location) <= 2)
+        {
+            TakeDamage(i.second->GetDamage());
+            i.second->TakeDamage(i.second->GetHp());
+            i.second->Die();
+        }
+    }
+}
+
 Tower::Tower ()
 {
     _hp = 100;
     _max_hp = 100;
-    Location.length_y = 2;
-    Location.length_x = 2;
     _damage = 30;
     _reload = 2;
 }

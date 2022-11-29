@@ -6,20 +6,11 @@ class Warrior;
 class World;
 class Cell;
 
-typedef struct Coordinates
-{
-    int x = 0;
-    int y = 0;
-    int length_x = 0;
-    int length_y = 0;
-} Coordinates;
-
 class Building
 {
 protected:
     int _hp;
     int _max_hp;
-    Coordinates Location;
     Cell* _location;
     int _level;
     int _level_max;
@@ -34,8 +25,9 @@ public:
 class Castle : public Building
 {
 public:
-    Castle();
-    int LevelUp() override;
+    Castle ();
+    int LevelUp () override;
+    void CheckEntities (World & world);
 };
 class Tower : public Building
 {

@@ -5,6 +5,7 @@
 
 class Cell;
 class Building;
+class World;
 
 class Warrior
 {
@@ -19,7 +20,7 @@ public:
     [[nodiscard]] int GetHp () const;
     [[nodiscard]] int GetDamage () const;
     Cell* GetCurCell ();
-    void Die ();
+    void Die (World & world);
     void DealDamage (Building & building) const;
     void TakeDamage (int damage);
     void Move ();

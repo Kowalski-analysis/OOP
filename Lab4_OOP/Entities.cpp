@@ -22,11 +22,11 @@ Cell* Warrior::GetCurCell ()
 {
     return _cur_cell;
 }
-void Warrior::Die ()
+void Warrior::Die (World & world)
 {
     if (_hp <= 0)
     {
-
+        world.GetEntities();
     }
 }
 void Warrior::DealDamage (Building & building) const
