@@ -1,6 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "World.h"
+#include "Buildings.h"
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "My window", sf::Style::Fullscreen);
@@ -21,6 +23,7 @@ int main()
                 window.close();
         }
         window.clear();
+        Castle C(W);
         W.DrawLand(window);
         W.DrawBuildings(window);
         window.display();

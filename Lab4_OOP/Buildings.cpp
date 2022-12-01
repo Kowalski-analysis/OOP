@@ -29,6 +29,7 @@ std::string map_buildings[22] = {
 
 Building::Building () : _hp(0), _max_hp(0), _level(1), _level_max(5)
 {
+    _building_type = 'a';
 }
 void Building::TakeDamage (int damage)
 {
@@ -65,15 +66,17 @@ Cell* Building::GetCurrentCell ()
 {
     return _location;
 }
-char Building::GetBuildingType ()
+char Building::GetBuildingType () const
 {
     return _building_type;
 }
 
-Castle::Castle ()
+Castle::Castle (World & world)
 {
     _hp = 1000;
     _max_hp = 1000;
+    _location = world.GetField()[10][5];
+    world.GetBuildings().emplace(std::make_pair(0,this));
 }
 int Castle::LevelUp ()
 {
@@ -86,7 +89,6 @@ int Castle::LevelUp ()
     _hp += 100;
     return 0;
 }
-
 void Castle::CheckEntities (World & world)
 {
     for (auto & i : world.GetEntities())

@@ -17,19 +17,18 @@ protected:
     char _building_type;
 public:
     Building ();
-    Building (int x, int y);
     void Heal ();
     void TakeDamage (int damage);
     virtual int LevelUp () = 0;
     void Destroy ();
     void SetBuildingType ();
     Cell* GetCurrentCell ();
-    char GetBuildingType ();
+    [[nodiscard]] char GetBuildingType () const;
 };
 class Castle : public Building
 {
 public:
-    Castle ();
+    Castle (World & world);
     int LevelUp () override;
     void CheckEntities (World & world);
 };
