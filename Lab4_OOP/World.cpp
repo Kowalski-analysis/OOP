@@ -171,7 +171,7 @@ World::World (int size_x, int size_y)
     for (int i = 0; i < _size_y; ++i) {
         for (int j = 0; j < _size_x; ++j) {
             Cell* new_cell = new Cell(j, i);
-            if (i == 0 || j == 0 || i == _size_x + 1 || j == _size_y + 1)
+            if (i == 0 || j == 0 || i == _size_x - 1 || j == _size_y - 1)
             {
                 new_cell->SetLock();
                 new_cell->SetAirLock();
