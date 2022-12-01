@@ -2,34 +2,23 @@
 #include "World.h"
 #include "Entities.h"
 
-std::string map_buildings[22] = {
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "     a    ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-        "          ",
-};
-
 Building::Building () : _hp(0), _max_hp(0), _level(1), _level_max(5)
 {
-    _building_type = 'a';
+    _building_type = ' ';
+    _location = nullptr;
+    _id = 0;
+}
+int Building::GetId() const
+{
+    return _id;
+}
+Cell* Building::GetCurCell ()
+{
+    return _location;
+}
+char Building::GetBuildingType () const
+{
+    return _building_type;
 }
 void Building::TakeDamage (int damage)
 {
@@ -51,32 +40,23 @@ void Building::Heal ()
     }
     _hp += 100;
 }
-void Building::Destroy ()
+void Building::Destroy (World & world) const
 {
     if (_hp <= 0)
     {
-
+        world.GetBuildings().erase(GetId());
     }
 }
-void Building::SetBuildingType ()
-{
-    _building_type = map_buildings[GetCurrentCell()->GetY()][GetCurrentCell()->GetX()];
-}
-Cell* Building::GetCurrentCell ()
-{
-    return _location;
-}
-char Building::GetBuildingType () const
-{
-    return _building_type;
-}
 
-Castle::Castle (World & world)
+Castle::Castle (World & world, int x, int y)
 {
+    _id = (int)world.GetBuildings().size() + 1;
     _hp = 1000;
     _max_hp = 1000;
-    _location = world.GetField()[10][5];
-    world.GetBuildings().emplace(std::make_pair(0,this));
+    _building_type = 'a';
+    _location = world.GetField()[y][x];
+    _location->SetLock();
+    world.GetBuildings().emplace(_id, this);
 }
 int Castle::LevelUp ()
 {
@@ -93,7 +73,7 @@ void Castle::CheckEntities (World & world)
 {
     for (auto & i : world.GetEntities())
     {
-        if (i.second->GetCurCell()->GetManhattanDistance(*_location) <= 2)
+        if (i.second->GetCurCell()->GetNextCell()->GetNextCell() == nullptr)
         {
             TakeDamage(i.second->GetDamage());
             i.second->TakeDamage(i.second->GetHp());
@@ -102,12 +82,18 @@ void Castle::CheckEntities (World & world)
     }
 }
 
-Tower::Tower ()
+Tower::Tower (World & world, int x, int y)
 {
+    _id = (int)world.GetBuildings().size() + 1;
     _hp = 100;
     _max_hp = 100;
     _damage = 30;
     _reload = 2;
+    _radius = 3;
+    _building_type = 'b';
+    _location = world.GetField()[y][x];
+    _location->SetLock();
+    world.GetBuildings().emplace(_id, this);
 }
 int Tower::GetDamage () const
 {
@@ -149,6 +135,16 @@ int Tower::LevelUp ()
     return 0;
 }
 
+Wall::Wall (World & world, int x, int y)
+{
+    _id = (int)world.GetBuildings().size() + 1;
+    _hp = 200;
+    _max_hp = 200;
+    _building_type = 'c';
+    _location = world.GetField()[y][x];
+    _location->SetLock();
+    world.GetBuildings().emplace(_id, this);
+}
 int Wall::LevelUp ()
 {
     if (_level == _level_max)
@@ -161,12 +157,17 @@ int Wall::LevelUp ()
     return 0;
 }
 
-Spawner::Spawner ()
+Spawner::Spawner (World & world, int x, int y)
 {
-    _hp = 1;
-    _max_hp = 1;
+    _id = (int)world.GetBuildings().size() + 1;
+    _hp = 100;
+    _max_hp = 100;
+    _building_type = 'd';
     _count_troop = 1;
     _reload = 10;
+    _location = world.GetField()[y][x];
+    _location->SetLock();
+    world.GetBuildings().emplace(_id, this);
 }
 int Spawner::LevelUp ()
 {
@@ -184,5 +185,9 @@ int Spawner::LevelUp ()
         --_reload;
     }
     return 0;
+}
+void Spawner::SpawnUnit (World & world, char unit_type)
+{
+
 }
 

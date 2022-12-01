@@ -1,5 +1,7 @@
 #include "World.h"
 #include "Buildings.h"
+#include "Entities.h"
+#include "windows.h"
 
 std::string map_land[22] = {
         "hhhhaahhhh",
@@ -37,14 +39,6 @@ Cell::Cell (int x, int y) : Cell()
     _x = x;
     _y = y;
 }
-void Cell::SetX (int x)
-{
-    _x = x;
-}
-void Cell::SetY (int y)
-{
-    _y = y;
-}
 void Cell::SetLock ()
 {
     _lock = true;
@@ -68,6 +62,11 @@ void Cell::SetWay (Cell & to)
 void Cell::SetLandType (std::string* map)
 {
     _land_type = map[_y][_x];
+    if ((int)map[_y][_x] / 105 == 1)
+    {
+        SetLock();
+        SetAirLock();
+    }
 }
 int Cell::GetX () const
 {
@@ -93,16 +92,24 @@ std::vector <Cell*> Cell::GetNeighbors (World & world, std::vector <Cell*> & nei
 {
     for (int i = _x - 1; i <= _x + 1; i += 2)
     {
-        if (!(world.GetField())[i][_y]->_lock)
+        if (i < 0 || i >= world.GetSizeX())
         {
-            neighbors.push_back((world.GetField())[i][_y]);
+            continue;
+        }
+        if (!(world.GetField())[_y][i]->_lock)
+        {
+            neighbors.push_back((world.GetField())[_y][i]);
         }
     }
     for (int i = _y - 1; i <= _y + 1; i += 2)
     {
-        if (!(world.GetField())[_x][i]->_lock)
+        if (i < 0 || i >= world.GetSizeY())
         {
-            neighbors.push_back((world.GetField())[_x][i]);
+            continue;
+        }
+        if (!(world.GetField())[i][_x]->_lock)
+        {
+            neighbors.push_back((world.GetField())[i][_x]);
         }
     }
     return neighbors;
@@ -173,6 +180,14 @@ World::World (int size_x, int size_y)
         }
     }
 }
+int World::GetSizeX () const
+{
+    return _size_x;
+}
+int World::GetSizeY () const
+{
+    return _size_y;
+}
 std::vector <std::vector <Cell*>> & World::GetField ()
 {
     return _field;
@@ -195,13 +210,6 @@ void World::ReadMap ()
         }
     }
 }
-void World::ReadBuildings ()
-{
-    for (auto i : _buildings)
-    {
-        i.second->SetBuildingType();
-    }
-}
 void World::DrawLand (sf::RenderWindow & window)
 {
     ReadMap();
@@ -221,11 +229,11 @@ void World::DrawLand (sf::RenderWindow & window)
             {
                 continue;
             }
-            float x = (float)j->GetX() * 178;
+            float x = (float)j->GetX() * 176;
             float y = (float)j->GetY() * 44;
             if (j->GetY() % 2 == 1)
             {
-                x += 90;
+                x += 88;
             }
             spt.setPosition(x, y);
             int x0 = ((int)j->GetLandType() - 97) * 180 % 1440;
@@ -239,9 +247,8 @@ void World::DrawLand (sf::RenderWindow & window)
 }
 void World::DrawBuildings (sf::RenderWindow & window)
 {
-    ReadBuildings();
     sf::Image img;
-    img.loadFromFile("../Textures/Castle.png");
+    img.loadFromFile("../Textures/Buildings_test.png");
 
     sf::Texture tex;
     tex.loadFromImage(img);
@@ -250,23 +257,39 @@ void World::DrawBuildings (sf::RenderWindow & window)
     spt.setTexture(tex);
     for (auto i : _buildings)
     {
-        if (i.second->GetBuildingType() == ' ')
+        float x = (float)i.second->GetCurCell()->GetX() * 176;
+        float y = (float)i.second->GetCurCell()->GetY() * 44 - 354;
+        if (i.second->GetCurCell()->GetY() % 2 == 1)
         {
-            continue;
+            x += 88;
         }
-        float x = (float)i.second->GetCurrentCell()->GetX() * 178;
-        float y = (float)i.second->GetCurrentCell()->GetY() * 44;
-        if (i.second->GetCurrentCell()->GetY() % 2 == 1)
-        {
-            x += 90;
-        }
-        spt.setPosition(x,y);
-        int x0 = ((int)i.second->GetBuildingType() - 97) * 360;
-        int y0 = ((int)i.second->GetBuildingType() / 105) * 92;
-        int x1 = 368;
-        int y1 = 897;
+        spt.setPosition(x, y);
+        int x0 = ((int)i.second->GetBuildingType() - 97) * 180;
+        int y0 = ((int)i.second->GetBuildingType() / 105) * 446;
+        int x1 = 180;
+        int y1 = 446;
         spt.setTextureRect(sf::IntRect(x0,y0,x1,y1));
         window.draw(spt);
+    }
+}
+void World::DrawEntities (sf::RenderWindow &window)
+{
+    sf::Image img;
+    img.loadFromFile("../Textures/Entities_test.png");
+
+    sf::Texture tex;
+    tex.loadFromImage(img);
+
+    sf::Sprite spt;
+    spt.setTexture(tex);
+    for (auto i : _entities)
+    {
+        float x = (float)i.second->GetCurCell()->GetX() * 176 + 70;
+        float y = (float)i.second->GetCurCell()->GetY() * 44 + 20;
+        if (i.second->GetCurCell()->GetY() % 2 == 1)
+        {
+            x += 88;
+        }
     }
 }
 

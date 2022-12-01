@@ -24,8 +24,6 @@ private:
 public:
     Cell ();
     Cell (int x, int y);
-    void SetX (int x);
-    void SetY (int y);
     void SetLock ();
     void SetUnlock ();
     void SetAirLock ();
@@ -52,13 +50,15 @@ private:
     std::map <int, Warrior*> _entities;
 public:
     World (int size_x, int size_y);
+    [[nodiscard]] int GetSizeX () const;
+    [[nodiscard]] int GetSizeY () const;
     std::vector <std::vector <Cell*>> & GetField ();
     std::map <int, Building*> & GetBuildings ();
     std::map <int, Warrior*> & GetEntities ();
-    void ReadBuildings ();
     void ReadMap ();
     void DrawLand (sf::RenderWindow & window);
     void DrawBuildings (sf::RenderWindow & window);
+    void DrawEntities (sf::RenderWindow & window);
 };
 
 #endif //LAB4_OOP_WORLD_H

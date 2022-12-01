@@ -4,11 +4,17 @@
 
 Warrior::Warrior ()
 {
+    _id = 0;
     _hp = 100;
     _damage = 10;
     _level = 1;
-    _velocity = 10.0;
+    _max_level = 5;
+    _velocity = 1;
     _cur_cell = nullptr;
+}
+int Warrior::GetId() const
+{
+    return _id;
 }
 int Warrior::GetHp () const
 {
@@ -22,12 +28,9 @@ Cell* Warrior::GetCurCell ()
 {
     return _cur_cell;
 }
-void Warrior::Die (World & world)
+void Warrior::Die (World & world) const
 {
-    if (_hp <= 0)
-    {
-//        world.GetEntities().;
-    }
+    world.GetEntities().erase(GetId());
 }
 void Warrior::DealDamage (Building & building) const
 {
@@ -48,7 +51,24 @@ void Warrior::Move ()
 {
     _cur_cell = _cur_cell->GetNextCell();
 }
+std::pair <int, int> Warrior::DirectionOfNextCell ()
+{
+    int x = _cur_cell->GetNextCell()->GetX() - _cur_cell->GetX();
+    int y = _cur_cell->GetNextCell()->GetY() - _cur_cell->GetY();
+    return std::make_pair(x, y);
+}
 
+Knight::Knight (World & world, int x, int y)
+{
+    _id = (int)world.GetEntities().size() + 1;
+    _hp = 100;
+    _damage = 10;
+    _level = 1;
+    _max_level = 5;
+    _velocity = 1;
+    _cur_cell = world.GetField()[y][x];
+    world.GetEntities().emplace(_id, this);
+}
 bool Knight::AvoidDamage ()
 {
     srand(time(nullptr));
@@ -70,10 +90,6 @@ int Aviation::LevelUp ()
     return 0;
 }
 
-Hero::Hero ()
-{
-    _radius_aura = 5;
-}
 int Hero::LevelUp ()
 {
     return 0;

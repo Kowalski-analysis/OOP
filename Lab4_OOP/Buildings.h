@@ -9,6 +9,7 @@ class Cell;
 class Building
 {
 protected:
+    int _id;
     int _hp;
     int _max_hp;
     Cell* _location;
@@ -17,18 +18,18 @@ protected:
     char _building_type;
 public:
     Building ();
+    [[nodiscard]] int GetId () const ;
+    Cell* GetCurCell ();
+    [[nodiscard]] char GetBuildingType () const;
     void Heal ();
     void TakeDamage (int damage);
     virtual int LevelUp () = 0;
-    void Destroy ();
-    void SetBuildingType ();
-    Cell* GetCurrentCell ();
-    [[nodiscard]] char GetBuildingType () const;
+    void Destroy (World & world) const;
 };
 class Castle : public Building
 {
 public:
-    Castle (World & world);
+    Castle (World & world, int x, int y);
     int LevelUp () override;
     void CheckEntities (World & world);
 };
@@ -40,7 +41,7 @@ private:
     double _reload;
     std::priority_queue <std::pair <int, Warrior*>, std::vector <std::pair <int, Warrior*>>, std::greater<>> _targets;
 public:
-    Tower ();
+    Tower (World & world, int x, int y);
     [[nodiscard]] int GetDamage () const;
     [[nodiscard]] int GetRadius () const;
     void FindTargets (World & world);
@@ -50,6 +51,7 @@ public:
 class Wall : public Building
 {
 public:
+    Wall (World & world, int x, int y);
     int LevelUp () override;
 };
 class Spawner : public Building
@@ -58,7 +60,8 @@ private:
     int _count_troop;
     double _reload;
 public:
-    Spawner ();
+    Spawner (World & world, int x, int y);
+    void SpawnUnit (World & world, char unit_type);
     int LevelUp () override;
 };
 

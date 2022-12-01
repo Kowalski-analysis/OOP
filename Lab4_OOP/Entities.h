@@ -10,44 +10,48 @@ class World;
 class Warrior
 {
 protected:
+    int _id;
     int _hp;
     double _velocity;
     int _damage;
     int _level;
+    int _max_level;
     Cell* _cur_cell;
 public:
     Warrior ();
+    [[nodiscard]] int GetId () const;
     [[nodiscard]] int GetHp () const;
     [[nodiscard]] int GetDamage () const;
     Cell* GetCurCell ();
-    void Die (World & world);
+    void Die (World & world) const;
     void DealDamage (Building & building) const;
     void TakeDamage (int damage);
     void Move ();
+    std::pair <int, int> DirectionOfNextCell ();
     virtual int LevelUp () = 0;
 };
-class Knight : Warrior
+class Knight : public Warrior
 {
 public:
+    Knight (World & world, int x, int y);
     static bool AvoidDamage ();
     int LevelUp () override;
 };
-class Juggernaut : Warrior
+class Juggernaut : public Warrior
 {
 public:
     int LevelUp () override;
 };
-class Aviation : Warrior
+class Aviation : public Warrior
 {
 public:
     int LevelUp () override;
 };
-class Hero : Warrior
+class Hero : public Warrior
 {
 private:
     int _radius_aura;
 public:
-    Hero();
     int LevelUp () override;
 };
 
