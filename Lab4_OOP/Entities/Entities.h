@@ -10,6 +10,8 @@ class World;
 class Warrior
 {
 protected:
+    float _x;
+    float _y;
     int _id;
     int _hp;
     double _velocity;
@@ -19,15 +21,19 @@ protected:
     Cell* _cur_cell;
 public:
     Warrior ();
+    [[nodiscard]] float GetX () const;
+    [[nodiscard]] float GetY () const;
     [[nodiscard]] int GetId () const;
     [[nodiscard]] int GetHp () const;
     [[nodiscard]] int GetDamage () const;
     Cell* GetCurCell ();
+    void AddtoX (float x);
+    void AddtoY (float y);
     void Die (World & world) const;
     void DealDamage (Building & building) const;
     void TakeDamage (int damage);
     void Move ();
-    std::pair <int, int> DirectionOfNextCell ();
+    std::pair <float, float> DirectionOfNextCell ();
     virtual int LevelUp () = 0;
 };
 class Knight : public Warrior

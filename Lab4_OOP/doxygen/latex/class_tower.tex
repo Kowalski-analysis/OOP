@@ -1,0 +1,107 @@
+\hypertarget{class_tower}{}\doxysection{Tower Class Reference}
+\label{class_tower}\index{Tower@{Tower}}
+
+
+Класс-\/наследник класса \mbox{\hyperlink{class_building}{Building}}. Тип постройки -\/ башня.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for Tower\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tower}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tower_add0b9769a97d170faf512e898313b8c8}{Tower}} (\mbox{\hyperlink{class_world}{World}} \&world, int x, int y)
+\begin{DoxyCompactList}\small\item\em Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_tower_aa00ade2ab9f993c85de280bb03966215}{Get\+Damage}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий урон башни. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_tower_a6160cb421178a708d460226c614accbc}{Get\+Radius}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий радиус обстрела башни. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tower_ab0996806955e6d4e760ceebef0215354}\label{class_tower_ab0996806955e6d4e760ceebef0215354}} 
+void {\bfseries Find\+Targets} (\mbox{\hyperlink{class_world}{World}} \&world)
+\begin{DoxyCompactList}\small\item\em Метод, добавляющий цели в очередь обстрела башни. В качестве параметров принимает ссылку на игровое поле. @ \mbox{\hyperlink{class_world}{World}} \& world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tower_a59622ebcbee49bc231ce35131d8a3ce5}\label{class_tower_a59622ebcbee49bc231ce35131d8a3ce5}} 
+void {\bfseries Deal\+Damage} () const
+\begin{DoxyCompactList}\small\item\em Метод, наносящий урон сущности из очереди. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_tower_ad7966dd4480a5caf66a11972104ef554}{Level\+Up}} () override
+\begin{DoxyCompactList}\small\item\em Метод повышения уровня постройки. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Класс-\/наследник класса \mbox{\hyperlink{class_building}{Building}}. Тип постройки -\/ башня. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_tower_add0b9769a97d170faf512e898313b8c8}\label{class_tower_add0b9769a97d170faf512e898313b8c8}} 
+\index{Tower@{Tower}!Tower@{Tower}}
+\index{Tower@{Tower}!Tower@{Tower}}
+\doxysubsubsection{\texorpdfstring{Tower()}{Tower()}}
+{\footnotesize\ttfamily Tower\+::\+Tower (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world, int x, int y \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tower_aa00ade2ab9f993c85de280bb03966215}\label{class_tower_aa00ade2ab9f993c85de280bb03966215}} 
+\index{Tower@{Tower}!GetDamage@{GetDamage}}
+\index{GetDamage@{GetDamage}!Tower@{Tower}}
+\doxysubsubsection{\texorpdfstring{GetDamage()}{GetDamage()}}
+{\footnotesize\ttfamily int Tower\+::\+Get\+Damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий урон башни. 
+
+\begin{DoxyReturn}{Returns}
+int Урон. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_tower_a6160cb421178a708d460226c614accbc}\label{class_tower_a6160cb421178a708d460226c614accbc}} 
+\index{Tower@{Tower}!GetRadius@{GetRadius}}
+\index{GetRadius@{GetRadius}!Tower@{Tower}}
+\doxysubsubsection{\texorpdfstring{GetRadius()}{GetRadius()}}
+{\footnotesize\ttfamily int Tower\+::\+Get\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий радиус обстрела башни. 
+
+\begin{DoxyReturn}{Returns}
+int Радиус. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_tower_ad7966dd4480a5caf66a11972104ef554}\label{class_tower_ad7966dd4480a5caf66a11972104ef554}} 
+\index{Tower@{Tower}!LevelUp@{LevelUp}}
+\index{LevelUp@{LevelUp}!Tower@{Tower}}
+\doxysubsubsection{\texorpdfstring{LevelUp()}{LevelUp()}}
+{\footnotesize\ttfamily bool Tower\+::\+Level\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Метод повышения уровня постройки. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_a33271cbb9ed0cba7da8cc72d8c519bdb}{Building}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Buildings.\+h\end{DoxyCompactItemize}

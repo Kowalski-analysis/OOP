@@ -1,6 +1,6 @@
 #include "Buildings.h"
-#include "World.h"
-#include "Entities.h"
+#include "../World/World.h"
+#include "../Entities/Entities.h"
 
 Building::Building () : _hp(0), _max_hp(0), _level(1), _level_max(5)
 {

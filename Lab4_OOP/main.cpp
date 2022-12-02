@@ -1,15 +1,15 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "World.h"
-#include "Buildings.h"
-#include "Entities.h"
+#include "World/World.h"
+#include "Buildings/Buildings.h"
+#include "Entities/Entities.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "My window", sf::Style::Fullscreen);
     sf::Clock clock;
     World W(8, 20);
-    W.GetField()[1][1]->A_star(W, *W.GetField()[9][9]);
+    W.GetField()[1][1]->A_star(W, *W.GetField()[1][2]);
     Wall VV1(W, 3, 7);
     Wall VV2(W, 4, 8);
     Wall VV3(W, 4, 9);
@@ -18,22 +18,32 @@ int main()
     Castle C(W, 4, 14);
     Tower T(W, 6, 17);
     Spawner S(W, 3, 6);
+    Knight K(W, 1, 1);
+    W.GetField()[1][1]->A_star(W, *W.GetField()[17][5]);
     while (window.isOpen())
     {
-        long long time = clock.getElapsedTime().asMicroseconds();
+        float time = (float)clock.getElapsedTime().asMicroseconds();
         clock.restart();
-            time /= 800;
-            sf::Event event {};
-            while (window.pollEvent(event))
+        time /= 800;
+        sf::Event event {};
+        while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
+            {
                 window.close();
+            }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))
+            {
                 window.close();
+            }
         }
         window.clear();
         W.DrawLand(window);
         W.DrawBuildings(window);
+        if (K.GetCurCell()->GetNextCell() != nullptr)
+        {
+            W.DrawEntities(window, time);
+        }
         window.display();
     }
     return 0;

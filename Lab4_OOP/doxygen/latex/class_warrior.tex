@@ -1,0 +1,284 @@
+\hypertarget{class_warrior}{}\doxysection{Warrior Class Reference}
+\label{class_warrior}\index{Warrior@{Warrior}}
+
+
+Абстрактный класс сущности.  
+
+
+
+
+{\ttfamily \#include $<$Entities.\+h$>$}
+
+Inheritance diagram for Warrior\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_warrior}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_warrior_a514c253a8e9c3f845f11f344804335d4}{Warrior}} ()
+\item 
+float \mbox{\hyperlink{class_warrior_a22223bddc7ec322dab28c446f999dabb}{GetX}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий текующую координату Х сущности на экране. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_warrior_adc72e2b751539435be76f0b1d431b961}{GetY}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий текующую координату У сущности на экране. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_warrior_a021d6ce1e614823c6bee332514a11ca4}{Get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий индекс сущности. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_warrior_a37aca3a865047642ce8aeb9895b05e58}{Get\+Hp}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий здоровье сущности. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_warrior_afab1cac0eadd3ce1bb331f019dfdaffb}{Get\+Damage}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий урон сущности. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ \mbox{\hyperlink{class_warrior_a79558b0b3778e459e9b91bb2b5c21a36}{Get\+Cur\+Cell}} ()
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий указатель на текущую ячейку сущности. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warrior_a33ce594e08a9d3a9966ddeab75f02f3c}{AddtoX}} (float x)
+\begin{DoxyCompactList}\small\item\em Метод, изменяющий координату Х на экране сущности. В качестве параметра принимает изменение координаты X. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warrior_a1392159f4e89a4ea8c370efa9a3dec78}{AddtoY}} (float y)
+\begin{DoxyCompactList}\small\item\em Метод, изменяющий координату Y на экране сущности. В качестве параметра принимает изменение координаты Y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warrior_ad6acf5fff76543f44f28d1bbacc22cdf}{Die}} (\mbox{\hyperlink{class_world}{World}} \&world) const
+\begin{DoxyCompactList}\small\item\em Метод, удаляющий сущность из игрового поля. В качестве параметра принимает ссылку на игровое поле. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warrior_a760ba9560f2cbd3a60190f37e92e2b87}{Deal\+Damage}} (\mbox{\hyperlink{class_building}{Building}} \&building) const
+\begin{DoxyCompactList}\small\item\em Метод, наносящий урон постройке building. В качестве параметра принимает ссылку на постройку. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_warrior_a705f6cea55c57f325b55e1fb3f81fe27}{Take\+Damage}} (int damage)
+\begin{DoxyCompactList}\small\item\em Метод, принимающий урон. В качестве параметра принимает размер урона. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_warrior_a6e78b3de373c5f85e96ae879e042c7e7}\label{class_warrior_a6e78b3de373c5f85e96ae879e042c7e7}} 
+void {\bfseries Move} ()
+\begin{DoxyCompactList}\small\item\em Метод, перемещающий сущность в следующую по маршруту ячейку. \end{DoxyCompactList}\item 
+std\+::pair$<$ float, float $>$ \mbox{\hyperlink{class_warrior_adadb121132b62b6f8f52fefde1aea45c}{Direction\+Of\+Next\+Cell}} ()
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий пару множителей направления в зависимости от следующей по маршруту ячейки. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_warrior_acef45a7297aea9b052f5c92867681b0e}{Level\+Up}} ()=0
+\begin{DoxyCompactList}\small\item\em Виртуальный метод, повышающий уровень сущности. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_warrior_a2a309c3f2691badd68ab2499a2cb7cee}\label{class_warrior_a2a309c3f2691badd68ab2499a2cb7cee}} 
+float {\bfseries \+\_\+x}
+\item 
+\mbox{\Hypertarget{class_warrior_ab20e0eb59bcd95a61318234db7fc7ec0}\label{class_warrior_ab20e0eb59bcd95a61318234db7fc7ec0}} 
+float {\bfseries \+\_\+y}
+\item 
+\mbox{\Hypertarget{class_warrior_adce1ccbe24bf4b32b9540470f485c68b}\label{class_warrior_adce1ccbe24bf4b32b9540470f485c68b}} 
+int {\bfseries \+\_\+id}
+\item 
+\mbox{\Hypertarget{class_warrior_aea50778a3f78ee56660efe4808ac3af8}\label{class_warrior_aea50778a3f78ee56660efe4808ac3af8}} 
+int {\bfseries \+\_\+hp}
+\item 
+\mbox{\Hypertarget{class_warrior_a41bad20e9b8b83c0e31a30bf4bb9d293}\label{class_warrior_a41bad20e9b8b83c0e31a30bf4bb9d293}} 
+double {\bfseries \+\_\+velocity}
+\item 
+\mbox{\Hypertarget{class_warrior_a15dd023e060957f5a0333d91f8d1aacf}\label{class_warrior_a15dd023e060957f5a0333d91f8d1aacf}} 
+int {\bfseries \+\_\+damage}
+\item 
+\mbox{\Hypertarget{class_warrior_adac471e361a01fcad4f36a9721068d91}\label{class_warrior_adac471e361a01fcad4f36a9721068d91}} 
+int {\bfseries \+\_\+level}
+\item 
+\mbox{\Hypertarget{class_warrior_a8bf873e8177b285a808bbb59e03e3756}\label{class_warrior_a8bf873e8177b285a808bbb59e03e3756}} 
+int {\bfseries \+\_\+max\+\_\+level}
+\item 
+\mbox{\Hypertarget{class_warrior_a0443e89815d16c788cbfd22b33ecf519}\label{class_warrior_a0443e89815d16c788cbfd22b33ecf519}} 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ {\bfseries \+\_\+cur\+\_\+cell}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Абстрактный класс сущности. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_warrior_a514c253a8e9c3f845f11f344804335d4}\label{class_warrior_a514c253a8e9c3f845f11f344804335d4}} 
+\index{Warrior@{Warrior}!Warrior@{Warrior}}
+\index{Warrior@{Warrior}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{Warrior()}{Warrior()}}
+{\footnotesize\ttfamily Warrior\+::\+Warrior (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Конструктор класса по умолчанию 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_warrior_a33ce594e08a9d3a9966ddeab75f02f3c}\label{class_warrior_a33ce594e08a9d3a9966ddeab75f02f3c}} 
+\index{Warrior@{Warrior}!AddtoX@{AddtoX}}
+\index{AddtoX@{AddtoX}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{AddtoX()}{AddtoX()}}
+{\footnotesize\ttfamily void Warrior\+::\+AddtoX (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})}
+
+
+
+Метод, изменяющий координату Х на экране сущности. В качестве параметра принимает изменение координаты X. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & x \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_warrior_a1392159f4e89a4ea8c370efa9a3dec78}\label{class_warrior_a1392159f4e89a4ea8c370efa9a3dec78}} 
+\index{Warrior@{Warrior}!AddtoY@{AddtoY}}
+\index{AddtoY@{AddtoY}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{AddtoY()}{AddtoY()}}
+{\footnotesize\ttfamily void Warrior\+::\+AddtoY (\begin{DoxyParamCaption}\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Метод, изменяющий координату Y на экране сущности. В качестве параметра принимает изменение координаты Y. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_warrior_a760ba9560f2cbd3a60190f37e92e2b87}\label{class_warrior_a760ba9560f2cbd3a60190f37e92e2b87}} 
+\index{Warrior@{Warrior}!DealDamage@{DealDamage}}
+\index{DealDamage@{DealDamage}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{DealDamage()}{DealDamage()}}
+{\footnotesize\ttfamily void Warrior\+::\+Deal\+Damage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_building}{Building}} \&}]{building }\end{DoxyParamCaption}) const}
+
+
+
+Метод, наносящий урон постройке building. В качестве параметра принимает ссылку на постройку. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_building}{Building}}} & \& building \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_warrior_ad6acf5fff76543f44f28d1bbacc22cdf}\label{class_warrior_ad6acf5fff76543f44f28d1bbacc22cdf}} 
+\index{Warrior@{Warrior}!Die@{Die}}
+\index{Die@{Die}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{Die()}{Die()}}
+{\footnotesize\ttfamily void Warrior\+::\+Die (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world }\end{DoxyParamCaption}) const}
+
+
+
+Метод, удаляющий сущность из игрового поля. В качестве параметра принимает ссылку на игровое поле. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_warrior_adadb121132b62b6f8f52fefde1aea45c}\label{class_warrior_adadb121132b62b6f8f52fefde1aea45c}} 
+\index{Warrior@{Warrior}!DirectionOfNextCell@{DirectionOfNextCell}}
+\index{DirectionOfNextCell@{DirectionOfNextCell}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{DirectionOfNextCell()}{DirectionOfNextCell()}}
+{\footnotesize\ttfamily std\+::pair$<$ float, float $>$ Warrior\+::\+Direction\+Of\+Next\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод, возвращающий пару множителей направления в зависимости от следующей по маршруту ячейки. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair \texorpdfstring{$<$}{<}float, float\texorpdfstring{$>$}{>} Пара множителей. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_warrior_a79558b0b3778e459e9b91bb2b5c21a36}\label{class_warrior_a79558b0b3778e459e9b91bb2b5c21a36}} 
+\index{Warrior@{Warrior}!GetCurCell@{GetCurCell}}
+\index{GetCurCell@{GetCurCell}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{GetCurCell()}{GetCurCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cell}{Cell}} $\ast$ Warrior\+::\+Get\+Cur\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод, возвращающий указатель на текущую ячейку сущности. 
+
+\begin{DoxyReturn}{Returns}
+Cell$\ast$ Текущая ячейка 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_warrior_afab1cac0eadd3ce1bb331f019dfdaffb}\label{class_warrior_afab1cac0eadd3ce1bb331f019dfdaffb}} 
+\index{Warrior@{Warrior}!GetDamage@{GetDamage}}
+\index{GetDamage@{GetDamage}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{GetDamage()}{GetDamage()}}
+{\footnotesize\ttfamily int Warrior\+::\+Get\+Damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий урон сущности. 
+
+\begin{DoxyReturn}{Returns}
+int Урон 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_warrior_a37aca3a865047642ce8aeb9895b05e58}\label{class_warrior_a37aca3a865047642ce8aeb9895b05e58}} 
+\index{Warrior@{Warrior}!GetHp@{GetHp}}
+\index{GetHp@{GetHp}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{GetHp()}{GetHp()}}
+{\footnotesize\ttfamily int Warrior\+::\+Get\+Hp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий здоровье сущности. 
+
+\begin{DoxyReturn}{Returns}
+int Здоровье 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_warrior_a021d6ce1e614823c6bee332514a11ca4}\label{class_warrior_a021d6ce1e614823c6bee332514a11ca4}} 
+\index{Warrior@{Warrior}!GetId@{GetId}}
+\index{GetId@{GetId}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily int Warrior\+::\+Get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий индекс сущности. 
+
+\begin{DoxyReturn}{Returns}
+int Индекс 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_warrior_a22223bddc7ec322dab28c446f999dabb}\label{class_warrior_a22223bddc7ec322dab28c446f999dabb}} 
+\index{Warrior@{Warrior}!GetX@{GetX}}
+\index{GetX@{GetX}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily float Warrior\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий текующую координату Х сущности на экране. 
+
+\begin{DoxyReturn}{Returns}
+float Координата Х на экране 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_warrior_adc72e2b751539435be76f0b1d431b961}\label{class_warrior_adc72e2b751539435be76f0b1d431b961}} 
+\index{Warrior@{Warrior}!GetY@{GetY}}
+\index{GetY@{GetY}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily float Warrior\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий текующую координату У сущности на экране. 
+
+\begin{DoxyReturn}{Returns}
+float Координата У на экране 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_warrior_acef45a7297aea9b052f5c92867681b0e}\label{class_warrior_acef45a7297aea9b052f5c92867681b0e}} 
+\index{Warrior@{Warrior}!LevelUp@{LevelUp}}
+\index{LevelUp@{LevelUp}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{LevelUp()}{LevelUp()}}
+{\footnotesize\ttfamily virtual bool Warrior\+::\+Level\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Виртуальный метод, повышающий уровень сущности. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_knight_a586c02f3b04443f4870dd90012c13951}{Knight}}, \mbox{\hyperlink{class_juggernaut_ae862e83a31548e3249604a18202e9fd6}{Juggernaut}}, \mbox{\hyperlink{class_aviation_a80a3c97870c7df2a2e93f9c800637478}{Aviation}}, and \mbox{\hyperlink{class_hero_a7842a27dca64f33e53a98f94372ad221}{Hero}}.
+
+\mbox{\Hypertarget{class_warrior_a705f6cea55c57f325b55e1fb3f81fe27}\label{class_warrior_a705f6cea55c57f325b55e1fb3f81fe27}} 
+\index{Warrior@{Warrior}!TakeDamage@{TakeDamage}}
+\index{TakeDamage@{TakeDamage}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{TakeDamage()}{TakeDamage()}}
+{\footnotesize\ttfamily void Warrior\+::\+Take\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage }\end{DoxyParamCaption})}
+
+
+
+Метод, принимающий урон. В качестве параметра принимает размер урона. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & damage \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Entities.\+h\end{DoxyCompactItemize}

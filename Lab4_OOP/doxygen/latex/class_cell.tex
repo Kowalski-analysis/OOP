@@ -1,0 +1,224 @@
+\hypertarget{class_cell}{}\doxysection{Cell Class Reference}
+\label{class_cell}\index{Cell@{Cell}}
+
+
+Класс ячейки игрового поля.  
+
+
+
+
+{\ttfamily \#include $<$World.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cell_a394510643e8664cf12b5efaf5cb99f71}\label{class_cell_a394510643e8664cf12b5efaf5cb99f71}} 
+{\bfseries Cell} ()
+\begin{DoxyCompactList}\small\item\em Конструктор класса по умолчанию. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cell_aa39ad04eeebb7bf00d592ad36640337e}{Cell}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Конструктор класса. В качестве параметров принимает координаты ячейки на игровом поле. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a6d3f8fb6da8f8e47d26cb705f1dfb8a3}\label{class_cell_a6d3f8fb6da8f8e47d26cb705f1dfb8a3}} 
+void {\bfseries Set\+Lock} ()
+\begin{DoxyCompactList}\small\item\em Метод, блокирующий наземное передвижение через ячейку. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a793692ea5fbc156f01ddedc0f7304cdf}\label{class_cell_a793692ea5fbc156f01ddedc0f7304cdf}} 
+void {\bfseries Set\+Unlock} ()
+\begin{DoxyCompactList}\small\item\em Метод, разблокирующий назменое передвижение через ячейку. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a46201fd780043fbfa8be05b1754a1656}\label{class_cell_a46201fd780043fbfa8be05b1754a1656}} 
+void {\bfseries Set\+Air\+Lock} ()
+\begin{DoxyCompactList}\small\item\em Метод, блокирующий воздушное передвижение через ячейку. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a9274d2743c981c8a2eba98a429a02aa1}\label{class_cell_a9274d2743c981c8a2eba98a429a02aa1}} 
+void {\bfseries Set\+Air\+Unlock} ()
+\begin{DoxyCompactList}\small\item\em Метод, разблокирующий воздушное передвижение через ячейку. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cell_a8dfa89027fd3b14300a267712e2da786}{Set\+Way}} (\mbox{\hyperlink{class_cell}{Cell}} \&to)
+\begin{DoxyCompactList}\small\item\em Метод, устанавливающий следующую по маршруту ячейку после текущей. В качестве параметра принимает ссылку на следующую ячейку. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cell_a8c7821a484e5c4d67e27a626be66cdbb}{Set\+Land\+Type}} (std\+::string $\ast$map)
+\begin{DoxyCompactList}\small\item\em Метод, устанавливающий тип ландшафта ячейки. В качестве параметра принимает указатель на карту поля. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ \mbox{\hyperlink{class_cell_aa5812f45592acd89771ee4cc1845646b}{Get\+Next\+Cell}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий указатель на следующую по маршруту ячейку после текущей. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ \mbox{\hyperlink{class_cell_a30685ad5f35ec73e4161602c5e7fd27d}{Get\+Air\+Next\+Cell}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий указатель на следующую по воздушному маршруту ячейку после текущей. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cell_a3af5ea9b9e031151e16009b22118b07a}{GetX}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий координату Х ячейки. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cell_a3668c9664cadb1b94a632d497fa493c5}{GetY}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий координату Y ячейки. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cell_a9cebbef8429472341de563e52860ebdb}{Get\+Manhattan\+Distance}} (\mbox{\hyperlink{class_cell}{Cell}} \&target) const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий Манхэттеновское расстояние до ячейки target. В качестве параметра принимает ссылку на ячейку-\/цель. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{class_cell_acc6451218d5168ee922d7c0e67e178a0}{Get\+Neighbors}} (\mbox{\hyperlink{class_world}{World}} \&world, std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ \&neighbors) const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий вектор ячеек-\/соседей для текущей. В качестве параметра принимает ссылку на вектор и ссылку на игровое поле. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_cell_ad6d2f37b3d51eab820570fcda59a9b43}{Get\+Land\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий тип ландшафта ячейки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cell_a300c3b1a03c65794ce3465b76178c993}{A\+\_\+star}} (\mbox{\hyperlink{class_world}{World}} \&world, \mbox{\hyperlink{class_cell}{Cell}} \&target)
+\begin{DoxyCompactList}\small\item\em Метод, применяющий алгоритм A$\ast$ для поиска кратчайшего пути к ячейке-\/цели. Также расставляет поля Cell$\ast$ \+\_\+go\+\_\+to/\+Cell$\ast$ \+\_\+air\+\_\+go\+\_\+to в необходимых ячейках. В качестве параметров принимает ссылку на игровое поле и ссылку на ячейку-\/цель. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс ячейки игрового поля. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cell_aa39ad04eeebb7bf00d592ad36640337e}\label{class_cell_aa39ad04eeebb7bf00d592ad36640337e}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса. В качестве параметров принимает координаты ячейки на игровом поле. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & x, int y \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cell_a300c3b1a03c65794ce3465b76178c993}\label{class_cell_a300c3b1a03c65794ce3465b76178c993}} 
+\index{Cell@{Cell}!A\_star@{A\_star}}
+\index{A\_star@{A\_star}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{A\_star()}{A\_star()}}
+{\footnotesize\ttfamily void Cell\+::\+A\+\_\+star (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{\mbox{\hyperlink{class_cell}{Cell}} \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Метод, применяющий алгоритм A$\ast$ для поиска кратчайшего пути к ячейке-\/цели. Также расставляет поля Cell$\ast$ \+\_\+go\+\_\+to/\+Cell$\ast$ \+\_\+air\+\_\+go\+\_\+to в необходимых ячейках. В качестве параметров принимает ссылку на игровое поле и ссылку на ячейку-\/цель. 
+
+\begin{DoxyWarning}{Warning}
+Ячейка-\/цель должна быть доступна! 
+\end{DoxyWarning}
+\mbox{\Hypertarget{class_cell_a30685ad5f35ec73e4161602c5e7fd27d}\label{class_cell_a30685ad5f35ec73e4161602c5e7fd27d}} 
+\index{Cell@{Cell}!GetAirNextCell@{GetAirNextCell}}
+\index{GetAirNextCell@{GetAirNextCell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetAirNextCell()}{GetAirNextCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cell}{Cell}} $\ast$ Cell\+::\+Get\+Air\+Next\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий указатель на следующую по воздушному маршруту ячейку после текущей. 
+
+\begin{DoxyReturn}{Returns}
+Cell$\ast$ Указатель на следующую ячейку. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cell_ad6d2f37b3d51eab820570fcda59a9b43}\label{class_cell_ad6d2f37b3d51eab820570fcda59a9b43}} 
+\index{Cell@{Cell}!GetLandType@{GetLandType}}
+\index{GetLandType@{GetLandType}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetLandType()}{GetLandType()}}
+{\footnotesize\ttfamily char Cell\+::\+Get\+Land\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий тип ландшафта ячейки. 
+
+\begin{DoxyReturn}{Returns}
+char Тип ячейки. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cell_a9cebbef8429472341de563e52860ebdb}\label{class_cell_a9cebbef8429472341de563e52860ebdb}} 
+\index{Cell@{Cell}!GetManhattanDistance@{GetManhattanDistance}}
+\index{GetManhattanDistance@{GetManhattanDistance}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetManhattanDistance()}{GetManhattanDistance()}}
+{\footnotesize\ttfamily int Cell\+::\+Get\+Manhattan\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cell}{Cell}} \&}]{target }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий Манхэттеновское расстояние до ячейки target. В качестве параметра принимает ссылку на ячейку-\/цель. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_cell}{Cell}}} & \& target \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Манхэттеновское расстояние. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cell_acc6451218d5168ee922d7c0e67e178a0}\label{class_cell_acc6451218d5168ee922d7c0e67e178a0}} 
+\index{Cell@{Cell}!GetNeighbors@{GetNeighbors}}
+\index{GetNeighbors@{GetNeighbors}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetNeighbors()}{GetNeighbors()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ Cell\+::\+Get\+Neighbors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ \&}]{neighbors }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий вектор ячеек-\/соседей для текущей. В качестве параметра принимает ссылку на вектор и ссылку на игровое поле. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world, std\+::vector \texorpdfstring{$<$}{<}Cell$\ast$\texorpdfstring{$>$}{>} \& neighbors. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector \texorpdfstring{$<$}{<}Cell$\ast$\texorpdfstring{$>$}{>} Вектор ячеек-\/соседей. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cell_aa5812f45592acd89771ee4cc1845646b}\label{class_cell_aa5812f45592acd89771ee4cc1845646b}} 
+\index{Cell@{Cell}!GetNextCell@{GetNextCell}}
+\index{GetNextCell@{GetNextCell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetNextCell()}{GetNextCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cell}{Cell}} $\ast$ Cell\+::\+Get\+Next\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий указатель на следующую по маршруту ячейку после текущей. 
+
+\begin{DoxyReturn}{Returns}
+Cell$\ast$ Указатель на следующую ячейку. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cell_a3af5ea9b9e031151e16009b22118b07a}\label{class_cell_a3af5ea9b9e031151e16009b22118b07a}} 
+\index{Cell@{Cell}!GetX@{GetX}}
+\index{GetX@{GetX}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily int Cell\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий координату Х ячейки. 
+
+\begin{DoxyReturn}{Returns}
+int Координата X ячейки. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cell_a3668c9664cadb1b94a632d497fa493c5}\label{class_cell_a3668c9664cadb1b94a632d497fa493c5}} 
+\index{Cell@{Cell}!GetY@{GetY}}
+\index{GetY@{GetY}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily int Cell\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий координату Y ячейки. 
+
+\begin{DoxyReturn}{Returns}
+int Координата Y ячейки. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_cell_a8c7821a484e5c4d67e27a626be66cdbb}\label{class_cell_a8c7821a484e5c4d67e27a626be66cdbb}} 
+\index{Cell@{Cell}!SetLandType@{SetLandType}}
+\index{SetLandType@{SetLandType}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{SetLandType()}{SetLandType()}}
+{\footnotesize\ttfamily void Cell\+::\+Set\+Land\+Type (\begin{DoxyParamCaption}\item[{std\+::string $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Метод, устанавливающий тип ландшафта ячейки. В качестве параметра принимает указатель на карту поля. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string$\ast$} & map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cell_a8dfa89027fd3b14300a267712e2da786}\label{class_cell_a8dfa89027fd3b14300a267712e2da786}} 
+\index{Cell@{Cell}!SetWay@{SetWay}}
+\index{SetWay@{SetWay}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{SetWay()}{SetWay()}}
+{\footnotesize\ttfamily void Cell\+::\+Set\+Way (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cell}{Cell}} \&}]{to }\end{DoxyParamCaption})}
+
+
+
+Метод, устанавливающий следующую по маршруту ячейку после текущей. В качестве параметра принимает ссылку на следующую ячейку. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_cell}{Cell}}} & \& to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+World.\+h\end{DoxyCompactItemize}

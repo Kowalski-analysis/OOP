@@ -1,9 +1,11 @@
 #include "Entities.h"
-#include "Buildings.h"
-#include "World.h"
+#include "../Buildings/Buildings.h"
+#include "../World/World.h"
 
 Warrior::Warrior ()
 {
+    _x = 0;
+    _y = 0;
     _id = 0;
     _hp = 100;
     _damage = 10;
@@ -11,6 +13,14 @@ Warrior::Warrior ()
     _max_level = 5;
     _velocity = 1;
     _cur_cell = nullptr;
+}
+float Warrior::GetX () const
+{
+    return _x;
+}
+float Warrior::GetY () const
+{
+    return _y;
 }
 int Warrior::GetId() const
 {
@@ -27,6 +37,14 @@ int Warrior::GetDamage () const
 Cell* Warrior::GetCurCell ()
 {
     return _cur_cell;
+}
+void Warrior::AddtoX (float x)
+{
+    _x += x;
+}
+void Warrior::AddtoY (float y)
+{
+    _y += y;
 }
 void Warrior::Die (World & world) const
 {
@@ -51,10 +69,18 @@ void Warrior::Move ()
 {
     _cur_cell = _cur_cell->GetNextCell();
 }
-std::pair <int, int> Warrior::DirectionOfNextCell ()
+std::pair <float, float> Warrior::DirectionOfNextCell ()
 {
-    int x = _cur_cell->GetNextCell()->GetX() - _cur_cell->GetX();
-    int y = _cur_cell->GetNextCell()->GetY() - _cur_cell->GetY();
+    auto x = (float)(_cur_cell->GetNextCell()->GetX() - _cur_cell->GetX());
+    auto y = (float)(_cur_cell->GetNextCell()->GetY() - _cur_cell->GetY());
+    if (_cur_cell->GetNextCell()->GetY() % 2 == 1 && y == 1)
+    {
+        x += 0.5f;
+    }
+    if (_cur_cell->GetNextCell()->GetY() % 2 == 0 && y == 1)
+    {
+        x -= 0.5f;
+    }
     return std::make_pair(x, y);
 }
 
@@ -67,6 +93,12 @@ Knight::Knight (World & world, int x, int y)
     _max_level = 5;
     _velocity = 1;
     _cur_cell = world.GetField()[y][x];
+    _x = (float)_cur_cell->GetX() * 176;
+    if (_cur_cell->GetX() % 2 == 1)
+    {
+        _x += 88;
+    }
+    _y = (float)_cur_cell->GetY() * 44;
     world.GetEntities().emplace(_id, this);
 }
 bool Knight::AvoidDamage ()

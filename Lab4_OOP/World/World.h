@@ -4,7 +4,7 @@
 #include <vector>
 #include <queue>
 #include <SFML/Graphics.hpp>
-#include "Images.h"
+#include "../Images.h"
 
 class Warrior;
 class Building;
@@ -58,7 +58,7 @@ public:
     void ReadMap ();
     void DrawLand (sf::RenderWindow & window);
     void DrawBuildings (sf::RenderWindow & window);
-    void DrawEntities (sf::RenderWindow & window);
+    void DrawEntities (sf::RenderWindow & window, float time);
 };
 
 #endif //LAB4_OOP_WORLD_H

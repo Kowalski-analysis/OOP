@@ -1,0 +1,101 @@
+\hypertarget{class_hero}{}\doxysection{Hero Class Reference}
+\label{class_hero}\index{Hero@{Hero}}
+
+
+Класс-\/наследник класса \mbox{\hyperlink{class_warrior}{Warrior}}. Сущность -\/ герой.  
+
+
+
+
+{\ttfamily \#include $<$Entities.\+h$>$}
+
+Inheritance diagram for Hero\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hero}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hero_ab94d2d13bc027910a569952d3e16639f}{Hero}} (\mbox{\hyperlink{class_world}{World}} \&world, int x, int y)
+\begin{DoxyCompactList}\small\item\em Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна сущности. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hero_af1eda013ca49a92dcfcf31ae5f50d810}{Get\+Aura\+Radius}} () const
+\begin{DoxyCompactList}\small\item\em Метод возвращающий радиус ауры сущности. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hero_a7842a27dca64f33e53a98f94372ad221}{Level\+Up}} () override
+\begin{DoxyCompactList}\small\item\em Метод повышения уровня сущности. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hero_ae0360d26562f5617b20d058ff1750ce1}{Aura\+Effect}} (\mbox{\hyperlink{class_world}{World}} \&world)
+\begin{DoxyCompactList}\small\item\em Метод воздействия ауры сущности на другие сущности на игровом поле. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Класс-\/наследник класса \mbox{\hyperlink{class_warrior}{Warrior}}. Сущность -\/ герой. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hero_ab94d2d13bc027910a569952d3e16639f}\label{class_hero_ab94d2d13bc027910a569952d3e16639f}} 
+\index{Hero@{Hero}!Hero@{Hero}}
+\index{Hero@{Hero}!Hero@{Hero}}
+\doxysubsubsection{\texorpdfstring{Hero()}{Hero()}}
+{\footnotesize\ttfamily Hero\+::\+Hero (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна сущности. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world, int x, int y \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hero_ae0360d26562f5617b20d058ff1750ce1}\label{class_hero_ae0360d26562f5617b20d058ff1750ce1}} 
+\index{Hero@{Hero}!AuraEffect@{AuraEffect}}
+\index{AuraEffect@{AuraEffect}!Hero@{Hero}}
+\doxysubsubsection{\texorpdfstring{AuraEffect()}{AuraEffect()}}
+{\footnotesize\ttfamily void Hero\+::\+Aura\+Effect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world }\end{DoxyParamCaption})}
+
+
+
+Метод воздействия ауры сущности на другие сущности на игровом поле. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hero_af1eda013ca49a92dcfcf31ae5f50d810}\label{class_hero_af1eda013ca49a92dcfcf31ae5f50d810}} 
+\index{Hero@{Hero}!GetAuraRadius@{GetAuraRadius}}
+\index{GetAuraRadius@{GetAuraRadius}!Hero@{Hero}}
+\doxysubsubsection{\texorpdfstring{GetAuraRadius()}{GetAuraRadius()}}
+{\footnotesize\ttfamily int Hero\+::\+Get\+Aura\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод возвращающий радиус ауры сущности. 
+
+\begin{DoxyReturn}{Returns}
+int Радиус. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hero_a7842a27dca64f33e53a98f94372ad221}\label{class_hero_a7842a27dca64f33e53a98f94372ad221}} 
+\index{Hero@{Hero}!LevelUp@{LevelUp}}
+\index{LevelUp@{LevelUp}!Hero@{Hero}}
+\doxysubsubsection{\texorpdfstring{LevelUp()}{LevelUp()}}
+{\footnotesize\ttfamily bool Hero\+::\+Level\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Метод повышения уровня сущности. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_warrior_acef45a7297aea9b052f5c92867681b0e}{Warrior}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Entities.\+h\end{DoxyCompactItemize}

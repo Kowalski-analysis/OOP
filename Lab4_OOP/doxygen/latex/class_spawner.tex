@@ -1,0 +1,88 @@
+\hypertarget{class_spawner}{}\doxysection{Spawner Class Reference}
+\label{class_spawner}\index{Spawner@{Spawner}}
+
+
+Класс-\/наследник класса \mbox{\hyperlink{class_building}{Building}}. Тип постройки -\/ Спавнер.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for Spawner\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_spawner}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_spawner_a0303db22b195c7d0b37de05d226981d7}{Spawner}} (\mbox{\hyperlink{class_world}{World}} \&world, int x, int y)
+\begin{DoxyCompactList}\small\item\em Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_spawner_a8ec7d3aca280fc8246c3ac3bc61cd035}{Spawn\+Unit}} (\mbox{\hyperlink{class_world}{World}} \&world, char unit\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Метод спавна сущности. В качестве параметров принимает ссылку на игровое поле и тип сущности. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_spawner_ab108e3611d2c72657d471157a73d99da}{Level\+Up}} () override
+\begin{DoxyCompactList}\small\item\em Метод повышения уровня постройки. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Класс-\/наследник класса \mbox{\hyperlink{class_building}{Building}}. Тип постройки -\/ Спавнер. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_spawner_a0303db22b195c7d0b37de05d226981d7}\label{class_spawner_a0303db22b195c7d0b37de05d226981d7}} 
+\index{Spawner@{Spawner}!Spawner@{Spawner}}
+\index{Spawner@{Spawner}!Spawner@{Spawner}}
+\doxysubsubsection{\texorpdfstring{Spawner()}{Spawner()}}
+{\footnotesize\ttfamily Spawner\+::\+Spawner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world, int x, int y \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_spawner_ab108e3611d2c72657d471157a73d99da}\label{class_spawner_ab108e3611d2c72657d471157a73d99da}} 
+\index{Spawner@{Spawner}!LevelUp@{LevelUp}}
+\index{LevelUp@{LevelUp}!Spawner@{Spawner}}
+\doxysubsubsection{\texorpdfstring{LevelUp()}{LevelUp()}}
+{\footnotesize\ttfamily bool Spawner\+::\+Level\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Метод повышения уровня постройки. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_a33271cbb9ed0cba7da8cc72d8c519bdb}{Building}}.
+
+\mbox{\Hypertarget{class_spawner_a8ec7d3aca280fc8246c3ac3bc61cd035}\label{class_spawner_a8ec7d3aca280fc8246c3ac3bc61cd035}} 
+\index{Spawner@{Spawner}!SpawnUnit@{SpawnUnit}}
+\index{SpawnUnit@{SpawnUnit}!Spawner@{Spawner}}
+\doxysubsubsection{\texorpdfstring{SpawnUnit()}{SpawnUnit()}}
+{\footnotesize\ttfamily void Spawner\+::\+Spawn\+Unit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{char}]{unit\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Метод спавна сущности. В качестве параметров принимает ссылку на игровое поле и тип сущности. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world, char unit\+\_\+type \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Buildings.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,159 @@
+\hypertarget{class_building}{}\doxysection{Building Class Reference}
+\label{class_building}\index{Building@{Building}}
+
+
+Абстрактный класс постройки.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for Building\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_building}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_building_ab570ec0a203ee621f9f522c678a147d9}\label{class_building_ab570ec0a203ee621f9f522c678a147d9}} 
+{\bfseries Building} ()
+\begin{DoxyCompactList}\small\item\em Конструктор класса по умолчанию. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_building_a8d8f3d7bce6fbba430bd984358337049}{Get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий индекс постройки на игровом поле. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ \mbox{\hyperlink{class_building_ab743075825fce32389ec39b21cd05599}{Get\+Cur\+Cell}} ()
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий указатель на текущую ячейку постройки. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_building_ad522276ca50b87d7dfeaf7ecee19208f}{Get\+Building\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий тип постройки. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_building_a0ce1eece40a9d460cfde942ac8229602}\label{class_building_a0ce1eece40a9d460cfde942ac8229602}} 
+void {\bfseries Heal} ()
+\begin{DoxyCompactList}\small\item\em Метод, увеличивающий здоровье постройки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_building_a9e4832d57339b3ce19cf3d82a950a7fe}{Take\+Damage}} (int damage)
+\begin{DoxyCompactList}\small\item\em Метод, принимающий урон по постройке. В качестве параметра принимает значение урона. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_building_a33271cbb9ed0cba7da8cc72d8c519bdb}{Level\+Up}} ()=0
+\begin{DoxyCompactList}\small\item\em Виртуальный метод, повышающий уровень постройки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_building_a595930d835ce641febc70de2a0b1d40e}{Destroy}} (\mbox{\hyperlink{class_world}{World}} \&world) const
+\begin{DoxyCompactList}\small\item\em Метод, удаляющий постройку с игрового поля. В качестве параметра принимает ссылку на игровое поле. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_building_ad8b012592254cca66ef342c6413928ee}\label{class_building_ad8b012592254cca66ef342c6413928ee}} 
+int {\bfseries \+\_\+id}
+\item 
+\mbox{\Hypertarget{class_building_a290578d2c4780bb3b12a282edb7cb593}\label{class_building_a290578d2c4780bb3b12a282edb7cb593}} 
+int {\bfseries \+\_\+hp}
+\item 
+\mbox{\Hypertarget{class_building_affb4e72f944704c8f55565f2fda806d0}\label{class_building_affb4e72f944704c8f55565f2fda806d0}} 
+int {\bfseries \+\_\+max\+\_\+hp}
+\item 
+\mbox{\Hypertarget{class_building_a2467d2189efeec0591fe252e3f77503d}\label{class_building_a2467d2189efeec0591fe252e3f77503d}} 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ {\bfseries \+\_\+location}
+\item 
+\mbox{\Hypertarget{class_building_a7b1c50a09879de1c0b4d72e586de06e6}\label{class_building_a7b1c50a09879de1c0b4d72e586de06e6}} 
+int {\bfseries \+\_\+level}
+\item 
+\mbox{\Hypertarget{class_building_a2da8a71aa4bd9473ffc9da7bfba22501}\label{class_building_a2da8a71aa4bd9473ffc9da7bfba22501}} 
+int {\bfseries \+\_\+level\+\_\+max}
+\item 
+\mbox{\Hypertarget{class_building_a377f55b39f0c893af05c1f97bffac826}\label{class_building_a377f55b39f0c893af05c1f97bffac826}} 
+char {\bfseries \+\_\+building\+\_\+type}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Абстрактный класс постройки. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_building_a595930d835ce641febc70de2a0b1d40e}\label{class_building_a595930d835ce641febc70de2a0b1d40e}} 
+\index{Building@{Building}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!Building@{Building}}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
+{\footnotesize\ttfamily void Building\+::\+Destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world }\end{DoxyParamCaption}) const}
+
+
+
+Метод, удаляющий постройку с игрового поля. В качестве параметра принимает ссылку на игровое поле. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_building_ad522276ca50b87d7dfeaf7ecee19208f}\label{class_building_ad522276ca50b87d7dfeaf7ecee19208f}} 
+\index{Building@{Building}!GetBuildingType@{GetBuildingType}}
+\index{GetBuildingType@{GetBuildingType}!Building@{Building}}
+\doxysubsubsection{\texorpdfstring{GetBuildingType()}{GetBuildingType()}}
+{\footnotesize\ttfamily char Building\+::\+Get\+Building\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий тип постройки. 
+
+\begin{DoxyReturn}{Returns}
+char Тип постройки. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_building_ab743075825fce32389ec39b21cd05599}\label{class_building_ab743075825fce32389ec39b21cd05599}} 
+\index{Building@{Building}!GetCurCell@{GetCurCell}}
+\index{GetCurCell@{GetCurCell}!Building@{Building}}
+\doxysubsubsection{\texorpdfstring{GetCurCell()}{GetCurCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cell}{Cell}} $\ast$ Building\+::\+Get\+Cur\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод, возвращающий указатель на текущую ячейку постройки. 
+
+\begin{DoxyReturn}{Returns}
+Cell$\ast$ Get\+Cur\+Cell Ячейка. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_building_a8d8f3d7bce6fbba430bd984358337049}\label{class_building_a8d8f3d7bce6fbba430bd984358337049}} 
+\index{Building@{Building}!GetId@{GetId}}
+\index{GetId@{GetId}!Building@{Building}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily int Building\+::\+Get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Метод, возвращающий индекс постройки на игровом поле. 
+
+\begin{DoxyReturn}{Returns}
+int Индекс. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_building_a33271cbb9ed0cba7da8cc72d8c519bdb}\label{class_building_a33271cbb9ed0cba7da8cc72d8c519bdb}} 
+\index{Building@{Building}!LevelUp@{LevelUp}}
+\index{LevelUp@{LevelUp}!Building@{Building}}
+\doxysubsubsection{\texorpdfstring{LevelUp()}{LevelUp()}}
+{\footnotesize\ttfamily virtual bool Building\+::\+Level\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Виртуальный метод, повышающий уровень постройки. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_castle_a2e099ae0355301fbb7f79ce64e672067}{Castle}}, \mbox{\hyperlink{class_tower_ad7966dd4480a5caf66a11972104ef554}{Tower}}, \mbox{\hyperlink{class_wall_ab87428d456cdb095a30820cc16968e1d}{Wall}}, and \mbox{\hyperlink{class_spawner_ab108e3611d2c72657d471157a73d99da}{Spawner}}.
+
+\mbox{\Hypertarget{class_building_a9e4832d57339b3ce19cf3d82a950a7fe}\label{class_building_a9e4832d57339b3ce19cf3d82a950a7fe}} 
+\index{Building@{Building}!TakeDamage@{TakeDamage}}
+\index{TakeDamage@{TakeDamage}!Building@{Building}}
+\doxysubsubsection{\texorpdfstring{TakeDamage()}{TakeDamage()}}
+{\footnotesize\ttfamily void Building\+::\+Take\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage }\end{DoxyParamCaption})}
+
+
+
+Метод, принимающий урон по постройке. В качестве параметра принимает значение урона. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & damage. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Buildings.\+h\end{DoxyCompactItemize}

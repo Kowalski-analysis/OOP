@@ -1,0 +1,73 @@
+\hypertarget{_buildings_8h_source}{}\doxysection{Buildings.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LAB4\_OOP\_BUILDINGS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LAB4\_OOP\_BUILDINGS\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_building}{Building}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} \_id;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} \_hp;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} \_max\_hp;}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_cell}{Cell}}* \_location;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} \_level;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} \_level\_max;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{char} \_building\_type;}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_building_ab570ec0a203ee621f9f522c678a147d9}{Building}} ();}
+\DoxyCodeLine{28     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_building_a8d8f3d7bce6fbba430bd984358337049}{GetId}} () \textcolor{keyword}{const} ;}
+\DoxyCodeLine{33     \mbox{\hyperlink{class_cell}{Cell}}* \mbox{\hyperlink{class_building_ab743075825fce32389ec39b21cd05599}{GetCurCell}} ();}
+\DoxyCodeLine{38     [[nodiscard]] \textcolor{keywordtype}{char} \mbox{\hyperlink{class_building_ad522276ca50b87d7dfeaf7ecee19208f}{GetBuildingType}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_building_a0ce1eece40a9d460cfde942ac8229602}{Heal}} ();}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_building_a9e4832d57339b3ce19cf3d82a950a7fe}{TakeDamage}} (\textcolor{keywordtype}{int} damage);}
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_building_a33271cbb9ed0cba7da8cc72d8c519bdb}{LevelUp}} () = 0;}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_building_a595930d835ce641febc70de2a0b1d40e}{Destroy}} (\mbox{\hyperlink{class_world}{World}} \& world) \textcolor{keyword}{const};}
+\DoxyCodeLine{60 \};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{66 \textcolor{keyword}{class }\mbox{\hyperlink{class_castle}{Castle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_building}{Building}}}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68 \textcolor{keyword}{public}:}
+\DoxyCodeLine{74     \mbox{\hyperlink{class_castle_a7ec04b1bc73cadb0cf1508654e4ab3b1}{Castle}} (\mbox{\hyperlink{class_world}{World}} \& world, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{79     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_castle_a2e099ae0355301fbb7f79ce64e672067}{LevelUp}} () \textcolor{keyword}{override};}
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_castle_a1ff9d928216807af73b9402f02a8175b}{CheckEntities}} (\mbox{\hyperlink{class_world}{World}} \& world);}
+\DoxyCodeLine{86 \};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{92 \textcolor{keyword}{class }\mbox{\hyperlink{class_tower}{Tower}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_building}{Building}}}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94 \textcolor{keyword}{private}:}
+\DoxyCodeLine{95     \textcolor{keywordtype}{int} \_damage;}
+\DoxyCodeLine{96     \textcolor{keywordtype}{int} \_radius;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{double} \_reload;}
+\DoxyCodeLine{98     std::priority\_queue <std::pair <int, Warrior*>, std::vector <std::pair <int, Warrior*>>, std::greater<>> \_targets;}
+\DoxyCodeLine{99 \textcolor{keyword}{public}:}
+\DoxyCodeLine{105     \mbox{\hyperlink{class_tower_add0b9769a97d170faf512e898313b8c8}{Tower}} (\mbox{\hyperlink{class_world}{World}} \& world, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{110     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_tower_aa00ade2ab9f993c85de280bb03966215}{GetDamage}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{115     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_tower_a6160cb421178a708d460226c614accbc}{GetRadius}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{121     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tower_ab0996806955e6d4e760ceebef0215354}{FindTargets}} (\mbox{\hyperlink{class_world}{World}} \& world);}
+\DoxyCodeLine{125     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tower_a59622ebcbee49bc231ce35131d8a3ce5}{DealDamage}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{130     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_tower_ad7966dd4480a5caf66a11972104ef554}{LevelUp}} () \textcolor{keyword}{override};}
+\DoxyCodeLine{131 \};}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{136 \textcolor{keyword}{class }\mbox{\hyperlink{class_wall}{Wall}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_building}{Building}}}
+\DoxyCodeLine{137 \{}
+\DoxyCodeLine{138 \textcolor{keyword}{public}:}
+\DoxyCodeLine{139     \mbox{\hyperlink{class_wall}{Wall}} (\mbox{\hyperlink{class_world}{World}} \& world, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{144     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_wall_ab87428d456cdb095a30820cc16968e1d}{LevelUp}} () \textcolor{keyword}{override};}
+\DoxyCodeLine{145 \};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{150 \textcolor{keyword}{class }\mbox{\hyperlink{class_spawner}{Spawner}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_building}{Building}}}
+\DoxyCodeLine{151 \{}
+\DoxyCodeLine{152 \textcolor{keyword}{private}:}
+\DoxyCodeLine{153     \textcolor{keywordtype}{int} \_count\_troop;}
+\DoxyCodeLine{154     \textcolor{keywordtype}{double} \_reload;}
+\DoxyCodeLine{155 \textcolor{keyword}{public}:}
+\DoxyCodeLine{161     \mbox{\hyperlink{class_spawner_a0303db22b195c7d0b37de05d226981d7}{Spawner}} (\mbox{\hyperlink{class_world}{World}} \& world, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{167     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_spawner_a8ec7d3aca280fc8246c3ac3bc61cd035}{SpawnUnit}} (\mbox{\hyperlink{class_world}{World}} \& world, \textcolor{keywordtype}{char} unit\_type);}
+\DoxyCodeLine{172     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_spawner_ab108e3611d2c72657d471157a73d99da}{LevelUp}} () \textcolor{keyword}{override};}
+\DoxyCodeLine{173 \};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//LAB4\_OOP\_BUILDINGS\_H}}
+
+\end{DoxyCode}

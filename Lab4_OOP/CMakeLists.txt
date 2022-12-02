@@ -3,7 +3,8 @@ project(Lab4_OOP)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Lab4_OOP main.cpp World.cpp World.h Entities.cpp Entities.h Buildings.cpp Buildings.h Map.cpp Map.h Images.cpp Images.h View.cpp)
+add_executable(Lab4_OOP main.cpp World/World.cpp World/World.h Entities/Entities.cpp Entities/Entities.h
+        Buildings/Buildings.cpp Buildings/Buildings.h Map.cpp Map.h Images.cpp Images.h View.cpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR F:/SFML/lib/cmake/SFML)

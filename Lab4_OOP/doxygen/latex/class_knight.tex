@@ -1,0 +1,89 @@
+\hypertarget{class_knight}{}\doxysection{Knight Class Reference}
+\label{class_knight}\index{Knight@{Knight}}
+
+
+Класс-\/наследник класса \mbox{\hyperlink{class_warrior}{Warrior}}. Сущность -\/ легкая пехота.  
+
+
+
+
+{\ttfamily \#include $<$Entities.\+h$>$}
+
+Inheritance diagram for Knight\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_knight}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_knight_a127c479216b258b1e387cd8a6a8b5b92}{Knight}} (\mbox{\hyperlink{class_world}{World}} \&world, int x, int y)
+\begin{DoxyCompactList}\small\item\em Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна сущности. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_knight_a586c02f3b04443f4870dd90012c13951}{Level\+Up}} () override
+\begin{DoxyCompactList}\small\item\em Метод повышения уровня сущности. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_knight_afd507a38a973c314988d8cffaf0c2b40}{Avoid\+Damage}} ()
+\begin{DoxyCompactList}\small\item\em Метод, определяющий уклоенеие от входящего урона. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Класс-\/наследник класса \mbox{\hyperlink{class_warrior}{Warrior}}. Сущность -\/ легкая пехота. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_knight_a127c479216b258b1e387cd8a6a8b5b92}\label{class_knight_a127c479216b258b1e387cd8a6a8b5b92}} 
+\index{Knight@{Knight}!Knight@{Knight}}
+\index{Knight@{Knight}!Knight@{Knight}}
+\doxysubsubsection{\texorpdfstring{Knight()}{Knight()}}
+{\footnotesize\ttfamily Knight\+::\+Knight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна сущности. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world, int x, int y \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_knight_afd507a38a973c314988d8cffaf0c2b40}\label{class_knight_afd507a38a973c314988d8cffaf0c2b40}} 
+\index{Knight@{Knight}!AvoidDamage@{AvoidDamage}}
+\index{AvoidDamage@{AvoidDamage}!Knight@{Knight}}
+\doxysubsubsection{\texorpdfstring{AvoidDamage()}{AvoidDamage()}}
+{\footnotesize\ttfamily static bool Knight\+::\+Avoid\+Damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Метод, определяющий уклоенеие от входящего урона. 
+
+\begin{DoxyReturn}{Returns}
+bool Уклонение/Не уклонение. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_knight_a586c02f3b04443f4870dd90012c13951}\label{class_knight_a586c02f3b04443f4870dd90012c13951}} 
+\index{Knight@{Knight}!LevelUp@{LevelUp}}
+\index{LevelUp@{LevelUp}!Knight@{Knight}}
+\doxysubsubsection{\texorpdfstring{LevelUp()}{LevelUp()}}
+{\footnotesize\ttfamily bool Knight\+::\+Level\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Метод повышения уровня сущности. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_warrior_acef45a7297aea9b052f5c92867681b0e}{Warrior}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Entities.\+h\end{DoxyCompactItemize}

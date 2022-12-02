@@ -1,7 +1,6 @@
 #include "World.h"
-#include "Buildings.h"
-#include "Entities.h"
-#include "windows.h"
+#include "../Buildings/Buildings.h"
+#include "../Entities/Entities.h"
 
 std::string map_land[22] = {
         "hhhhaahhhh",
@@ -171,7 +170,7 @@ World::World (int size_x, int size_y)
     for (int i = 0; i < _size_y; ++i) {
         for (int j = 0; j < _size_x; ++j) {
             Cell* new_cell = new Cell(j, i);
-            if (i == 0 || j == 0 || i == _size_x + 1 || j == _size_y + 1)
+            if (i == 0 || j == 0 || i == _size_y - 1 || j == _size_x - 1)
             {
                 new_cell->SetLock();
                 new_cell->SetAirLock();
@@ -272,7 +271,7 @@ void World::DrawBuildings (sf::RenderWindow & window)
         window.draw(spt);
     }
 }
-void World::DrawEntities (sf::RenderWindow &window)
+void World::DrawEntities (sf::RenderWindow &window, float time)
 {
     sf::Image img;
     img.loadFromFile("../Textures/Entities_test.png");
@@ -282,13 +281,25 @@ void World::DrawEntities (sf::RenderWindow &window)
 
     sf::Sprite spt;
     spt.setTexture(tex);
-    for (auto i : _entities)
+    spt.setTextureRect(sf::IntRect(0,0,50,50));
+    for (int j = 0; j < 4; ++j)
     {
-        float x = (float)i.second->GetCurCell()->GetX() * 176 + 70;
-        float y = (float)i.second->GetCurCell()->GetY() * 44 + 20;
-        if (i.second->GetCurCell()->GetY() % 2 == 1)
+        for (auto i: _entities)
         {
-            x += 88;
+            float x_sh = i.second->DirectionOfNextCell().first;
+            float y_sh = i.second->DirectionOfNextCell().second;
+            spt.setPosition(i.second->GetX(), i.second->GetY());
+                spt.move((float)(x_sh * 44), (float)(y_sh * 11));
+                window.draw(spt);
+                i.second->AddtoX(x_sh * 44);
+                i.second->AddtoY(y_sh * 11);
+        }
+    }
+    for (auto i: _entities)
+    {
+        if (i.second->GetCurCell()->GetNextCell() != nullptr)
+        {
+            i.second->Move();
         }
     }
 }

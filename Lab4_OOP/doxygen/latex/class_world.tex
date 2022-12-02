@@ -1,0 +1,149 @@
+\hypertarget{class_world}{}\doxysection{World Class Reference}
+\label{class_world}\index{World@{World}}
+
+
+Класс игрового поля.  
+
+
+
+
+{\ttfamily \#include $<$World.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_a088c4f3bbdaecdae6386596945d44ebd}{World}} (int size\+\_\+x, int size\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Конструктор класса. В качестве параметров принимает размер игрового поля. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_world_a09d8bc5c816ef3fae1b8e6db60f5a2ae}{Get\+SizeX}} () const
+\item 
+int \mbox{\hyperlink{class_world_afdfae6e28878daf4caba6101eef34fb2}{Get\+SizeY}} () const
+\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ $>$ \& \mbox{\hyperlink{class_world_a16f61f8d6f99d11a63296cf2d9003377}{Get\+Field}} ()
+\item 
+std\+::map$<$ int, \mbox{\hyperlink{class_building}{Building}} $\ast$ $>$ \& \mbox{\hyperlink{class_world_aa8f4bc49adfa470a706e6ee481b247c6}{Get\+Buildings}} ()
+\item 
+std\+::map$<$ int, \mbox{\hyperlink{class_warrior}{Warrior}} $\ast$ $>$ \& \mbox{\hyperlink{class_world_a27af53572bfe7d42d46c4dbdc3c97e71}{Get\+Entities}} ()
+\item 
+void \mbox{\hyperlink{class_world_a8fb0e5fef06e56f1dd511d778ae48833}{Read\+Map}} ()
+\item 
+void \mbox{\hyperlink{class_world_a71b04cf4fb75434c935c27d41f23c924}{Draw\+Land}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_world_a9d41fe982e6edb71c877649923f7b20f}{Draw\+Buildings}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_world_ab9d68fc7f9f7793ef0265a28884cf6d6}{Draw\+Entities}} (sf\+::\+Render\+Window \&window, float time)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс игрового поля. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_world_a088c4f3bbdaecdae6386596945d44ebd}\label{class_world_a088c4f3bbdaecdae6386596945d44ebd}} 
+\index{World@{World}!World@{World}}
+\index{World@{World}!World@{World}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily World\+::\+World (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса. В качестве параметров принимает размер игрового поля. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+x,size\+\_\+y} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_a9d41fe982e6edb71c877649923f7b20f}\label{class_world_a9d41fe982e6edb71c877649923f7b20f}} 
+\index{World@{World}!DrawBuildings@{DrawBuildings}}
+\index{DrawBuildings@{DrawBuildings}!World@{World}}
+\doxysubsubsection{\texorpdfstring{DrawBuildings()}{DrawBuildings()}}
+{\footnotesize\ttfamily void World\+::\+Draw\+Buildings (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Метод, выводящий постройки на игровом поле на экран. 
+\begin{DoxyParams}{Parameters}
+{\em sf\+::\+Render\+Window} & \& window \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_ab9d68fc7f9f7793ef0265a28884cf6d6}\label{class_world_ab9d68fc7f9f7793ef0265a28884cf6d6}} 
+\index{World@{World}!DrawEntities@{DrawEntities}}
+\index{DrawEntities@{DrawEntities}!World@{World}}
+\doxysubsubsection{\texorpdfstring{DrawEntities()}{DrawEntities()}}
+{\footnotesize\ttfamily void World\+::\+Draw\+Entities (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{float}]{time }\end{DoxyParamCaption})}
+
+Метод, выводящий сущности на игровом поле на экран. 
+\begin{DoxyParams}{Parameters}
+{\em sf\+::\+Render\+Window} & \& window \\
+\hline
+{\em float} & time \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_a71b04cf4fb75434c935c27d41f23c924}\label{class_world_a71b04cf4fb75434c935c27d41f23c924}} 
+\index{World@{World}!DrawLand@{DrawLand}}
+\index{DrawLand@{DrawLand}!World@{World}}
+\doxysubsubsection{\texorpdfstring{DrawLand()}{DrawLand()}}
+{\footnotesize\ttfamily void World\+::\+Draw\+Land (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Метод, выводящий игровое поле (ландшафт) на экран. 
+\begin{DoxyParams}{Parameters}
+{\em sf\+::\+Render\+Window} & \& window \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_aa8f4bc49adfa470a706e6ee481b247c6}\label{class_world_aa8f4bc49adfa470a706e6ee481b247c6}} 
+\index{World@{World}!GetBuildings@{GetBuildings}}
+\index{GetBuildings@{GetBuildings}!World@{World}}
+\doxysubsubsection{\texorpdfstring{GetBuildings()}{GetBuildings()}}
+{\footnotesize\ttfamily std\+::map$<$ int, \mbox{\hyperlink{class_building}{Building}} $\ast$ $>$ \& World\+::\+Get\+Buildings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Метод, возвращающий контейнер с постройками на игровом поле. \begin{DoxyReturn}{Returns}
+std\+::map \texorpdfstring{$<$}{<}int, Building$\ast$\texorpdfstring{$>$}{>} \& Контейнер с постройками игрового поля. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_world_a27af53572bfe7d42d46c4dbdc3c97e71}\label{class_world_a27af53572bfe7d42d46c4dbdc3c97e71}} 
+\index{World@{World}!GetEntities@{GetEntities}}
+\index{GetEntities@{GetEntities}!World@{World}}
+\doxysubsubsection{\texorpdfstring{GetEntities()}{GetEntities()}}
+{\footnotesize\ttfamily std\+::map$<$ int, \mbox{\hyperlink{class_warrior}{Warrior}} $\ast$ $>$ \& World\+::\+Get\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Метод, возвращающий контейнер с сущностями на игровом поле. \begin{DoxyReturn}{Returns}
+std\+::map \texorpdfstring{$<$}{<}int, Warrior$\ast$\texorpdfstring{$>$}{>} \& Контейнер с сущностями игрового поля. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_world_a16f61f8d6f99d11a63296cf2d9003377}\label{class_world_a16f61f8d6f99d11a63296cf2d9003377}} 
+\index{World@{World}!GetField@{GetField}}
+\index{GetField@{GetField}!World@{World}}
+\doxysubsubsection{\texorpdfstring{GetField()}{GetField()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_cell}{Cell}} $\ast$ $>$ $>$ \& World\+::\+Get\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Метод, возвращающий контейнер с ячейками игрового поля. \begin{DoxyReturn}{Returns}
+std\+::vector \texorpdfstring{$<$}{<}std\+::vector \texorpdfstring{$<$}{<}Cell$\ast$\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} \& Контейнер с ячейками игрового поля. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_world_a09d8bc5c816ef3fae1b8e6db60f5a2ae}\label{class_world_a09d8bc5c816ef3fae1b8e6db60f5a2ae}} 
+\index{World@{World}!GetSizeX@{GetSizeX}}
+\index{GetSizeX@{GetSizeX}!World@{World}}
+\doxysubsubsection{\texorpdfstring{GetSizeX()}{GetSizeX()}}
+{\footnotesize\ttfamily int World\+::\+Get\+SizeX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Метод, возвращающий ширину игрового поля. \begin{DoxyReturn}{Returns}
+Ширина поля. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_world_afdfae6e28878daf4caba6101eef34fb2}\label{class_world_afdfae6e28878daf4caba6101eef34fb2}} 
+\index{World@{World}!GetSizeY@{GetSizeY}}
+\index{GetSizeY@{GetSizeY}!World@{World}}
+\doxysubsubsection{\texorpdfstring{GetSizeY()}{GetSizeY()}}
+{\footnotesize\ttfamily int World\+::\+Get\+SizeY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Метод, возвращающий высоту игрового поля. \begin{DoxyReturn}{Returns}
+Высота поля. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_world_a8fb0e5fef06e56f1dd511d778ae48833}\label{class_world_a8fb0e5fef06e56f1dd511d778ae48833}} 
+\index{World@{World}!ReadMap@{ReadMap}}
+\index{ReadMap@{ReadMap}!World@{World}}
+\doxysubsubsection{\texorpdfstring{ReadMap()}{ReadMap()}}
+{\footnotesize\ttfamily void World\+::\+Read\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Метод, производящий считывание типов ячеек поля. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+World.\+h\end{DoxyCompactItemize}

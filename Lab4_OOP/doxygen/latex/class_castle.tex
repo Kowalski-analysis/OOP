@@ -1,0 +1,88 @@
+\hypertarget{class_castle}{}\doxysection{Castle Class Reference}
+\label{class_castle}\index{Castle@{Castle}}
+
+
+Класс-\/наследник класса \mbox{\hyperlink{class_building}{Building}}. Тип постройки -\/ замок.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for Castle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_castle}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_castle_a7ec04b1bc73cadb0cf1508654e4ab3b1}{Castle}} (\mbox{\hyperlink{class_world}{World}} \&world, int x, int y)
+\begin{DoxyCompactList}\small\item\em Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_castle_a2e099ae0355301fbb7f79ce64e672067}{Level\+Up}} () override
+\begin{DoxyCompactList}\small\item\em Метод повышения уровня постройки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_castle_a1ff9d928216807af73b9402f02a8175b}{Check\+Entities}} (\mbox{\hyperlink{class_world}{World}} \&world)
+\begin{DoxyCompactList}\small\item\em Метод, проверяющий, дошли ли сущности до замка. В качестве параметров принимает ссылку на игровое поле. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Класс-\/наследник класса \mbox{\hyperlink{class_building}{Building}}. Тип постройки -\/ замок. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_castle_a7ec04b1bc73cadb0cf1508654e4ab3b1}\label{class_castle_a7ec04b1bc73cadb0cf1508654e4ab3b1}} 
+\index{Castle@{Castle}!Castle@{Castle}}
+\index{Castle@{Castle}!Castle@{Castle}}
+\doxysubsubsection{\texorpdfstring{Castle()}{Castle()}}
+{\footnotesize\ttfamily Castle\+::\+Castle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса. В качестве параметров принимает ссылку на игровое поле и координаты спавна. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world, int x, int y \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_castle_a1ff9d928216807af73b9402f02a8175b}\label{class_castle_a1ff9d928216807af73b9402f02a8175b}} 
+\index{Castle@{Castle}!CheckEntities@{CheckEntities}}
+\index{CheckEntities@{CheckEntities}!Castle@{Castle}}
+\doxysubsubsection{\texorpdfstring{CheckEntities()}{CheckEntities()}}
+{\footnotesize\ttfamily void Castle\+::\+Check\+Entities (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world }\end{DoxyParamCaption})}
+
+
+
+Метод, проверяющий, дошли ли сущности до замка. В качестве параметров принимает ссылку на игровое поле. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_world}{World}}} & \& world \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_castle_a2e099ae0355301fbb7f79ce64e672067}\label{class_castle_a2e099ae0355301fbb7f79ce64e672067}} 
+\index{Castle@{Castle}!LevelUp@{LevelUp}}
+\index{LevelUp@{LevelUp}!Castle@{Castle}}
+\doxysubsubsection{\texorpdfstring{LevelUp()}{LevelUp()}}
+{\footnotesize\ttfamily bool Castle\+::\+Level\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Метод повышения уровня постройки. 
+
+\begin{DoxyReturn}{Returns}
+bool Успех/Неудача. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_a33271cbb9ed0cba7da8cc72d8c519bdb}{Building}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Buildings.\+h\end{DoxyCompactItemize}

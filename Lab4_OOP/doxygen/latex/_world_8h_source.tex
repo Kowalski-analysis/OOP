@@ -1,0 +1,64 @@
+\hypertarget{_world_8h_source}{}\doxysection{World.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LAB4\_OOP\_WORLD\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LAB4\_OOP\_WORLD\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}../Images.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_cell}{Cell}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} \_x;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} \_y;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{bool} \_lock;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{bool} \_air\_lock;}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_cell}{Cell}}* \_go\_to;}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_cell}{Cell}}* \_air\_go\_to;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{char} \_land\_type;}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_cell_a394510643e8664cf12b5efaf5cb99f71}{Cell}} ();}
+\DoxyCodeLine{33     \mbox{\hyperlink{class_cell_aa39ad04eeebb7bf00d592ad36640337e}{Cell}} (\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a6d3f8fb6da8f8e47d26cb705f1dfb8a3}{SetLock}} ();}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a793692ea5fbc156f01ddedc0f7304cdf}{SetUnlock}} ();}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a46201fd780043fbfa8be05b1754a1656}{SetAirLock}} ();}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a9274d2743c981c8a2eba98a429a02aa1}{SetAirUnlock}} ();}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a8dfa89027fd3b14300a267712e2da786}{SetWay}} (\mbox{\hyperlink{class_cell}{Cell}} \& to);}
+\DoxyCodeLine{61     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a8c7821a484e5c4d67e27a626be66cdbb}{SetLandType}} (std::string* map);}
+\DoxyCodeLine{66     [[nodiscard]] \mbox{\hyperlink{class_cell}{Cell}}* \mbox{\hyperlink{class_cell_aa5812f45592acd89771ee4cc1845646b}{GetNextCell}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{71     [[nodiscard]] \mbox{\hyperlink{class_cell}{Cell}}* \mbox{\hyperlink{class_cell_a30685ad5f35ec73e4161602c5e7fd27d}{GetAirNextCell}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{76     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_a3af5ea9b9e031151e16009b22118b07a}{GetX}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{81     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_a3668c9664cadb1b94a632d497fa493c5}{GetY}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{88     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_a9cebbef8429472341de563e52860ebdb}{GetManhattanDistance}} (\mbox{\hyperlink{class_cell}{Cell}} \& target) \textcolor{keyword}{const};}
+\DoxyCodeLine{95     std::vector <Cell*> \mbox{\hyperlink{class_cell_acc6451218d5168ee922d7c0e67e178a0}{GetNeighbors}} (\mbox{\hyperlink{class_world}{World}} \& world, std::vector <Cell*> \& neighbors) \textcolor{keyword}{const};}
+\DoxyCodeLine{100     [[nodiscard]] \textcolor{keywordtype}{char} \mbox{\hyperlink{class_cell_ad6d2f37b3d51eab820570fcda59a9b43}{GetLandType}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{107     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a300c3b1a03c65794ce3465b76178c993}{A\_star}} (\mbox{\hyperlink{class_world}{World}} \& world, \mbox{\hyperlink{class_cell}{Cell}} \& target);}
+\DoxyCodeLine{108 \};}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{114 \textcolor{keyword}{class }\mbox{\hyperlink{class_world}{World}}}
+\DoxyCodeLine{115 \{}
+\DoxyCodeLine{116 \textcolor{keyword}{private}:}
+\DoxyCodeLine{117     \textcolor{keywordtype}{int} \_size\_x;}
+\DoxyCodeLine{118     \textcolor{keywordtype}{int} \_size\_y;}
+\DoxyCodeLine{119     std::vector <std::vector <Cell*>> \_field;}
+\DoxyCodeLine{120     std::map <int, Building*> \_buildings;}
+\DoxyCodeLine{121     std::map <int, Warrior*> \_entities;}
+\DoxyCodeLine{122 \textcolor{keyword}{public}:}
+\DoxyCodeLine{127     \mbox{\hyperlink{class_world_a088c4f3bbdaecdae6386596945d44ebd}{World}} (\textcolor{keywordtype}{int} size\_x, \textcolor{keywordtype}{int} size\_y);}
+\DoxyCodeLine{132     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_world_a09d8bc5c816ef3fae1b8e6db60f5a2ae}{GetSizeX}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{137     [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_world_afdfae6e28878daf4caba6101eef34fb2}{GetSizeY}} () \textcolor{keyword}{const};}
+\DoxyCodeLine{142     std::vector <std::vector <Cell*>> \& \mbox{\hyperlink{class_world_a16f61f8d6f99d11a63296cf2d9003377}{GetField}} ();}
+\DoxyCodeLine{147     std::map <int, Building*> \& \mbox{\hyperlink{class_world_aa8f4bc49adfa470a706e6ee481b247c6}{GetBuildings}} ();}
+\DoxyCodeLine{152     std::map <int, Warrior*> \& \mbox{\hyperlink{class_world_a27af53572bfe7d42d46c4dbdc3c97e71}{GetEntities}} ();}
+\DoxyCodeLine{156     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_a8fb0e5fef06e56f1dd511d778ae48833}{ReadMap}} ();}
+\DoxyCodeLine{161     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_a71b04cf4fb75434c935c27d41f23c924}{DrawLand}} (sf::RenderWindow \& window);}
+\DoxyCodeLine{166     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_a9d41fe982e6edb71c877649923f7b20f}{DrawBuildings}} (sf::RenderWindow \& window);}
+\DoxyCodeLine{172     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_ab9d68fc7f9f7793ef0265a28884cf6d6}{DrawEntities}} (sf::RenderWindow \& window, \textcolor{keywordtype}{float} time);}
+\DoxyCodeLine{173 \};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//LAB4\_OOP\_WORLD\_H}}
+
+\end{DoxyCode}
