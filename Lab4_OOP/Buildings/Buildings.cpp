@@ -20,6 +20,10 @@ char Building::GetBuildingType () const
 {
     return _building_type;
 }
+int Building::GetHp () const
+{
+    return _hp;
+}
 void Building::TakeDamage (int damage)
 {
     if (_hp <= damage)
@@ -45,6 +49,7 @@ void Building::Destroy (World & world) const
     if (_hp <= 0)
     {
         world.GetBuildings().erase(GetId());
+        world.GetField()[_location->GetY()][_location->GetX()]->SetUnlock();
     }
 }
 
@@ -107,16 +112,19 @@ void Tower::FindTargets (World & world)
 {
     for (std::pair <int, Warrior*> ent : world.GetEntities())
     {
-        int dist = ent.second->GetCurCell()->GetNextCell()->GetManhattanDistance(*_location);
+        int dist = ent.second->GetCurCell()->GetManhattanDistance(*_location);
         if (dist <= _radius)
         {
             _targets.emplace(dist + ent.second->GetHp(), ent.second);
         }
     }
 }
-void Tower::DealDamage (Warrior & warrior) const
+void Tower::DealDamage ()
 {
-    warrior.TakeDamage(_damage);
+    if (!_targets.empty())
+    {
+        _targets.top().second->TakeDamage(_damage);
+    }
 }
 int Tower::LevelUp ()
 {

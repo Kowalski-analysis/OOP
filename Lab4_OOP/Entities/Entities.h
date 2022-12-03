@@ -46,11 +46,13 @@ public:
 class Juggernaut : public Warrior
 {
 public:
+    Juggernaut (World & world, int x, int y);
     int LevelUp () override;
 };
 class Aviation : public Warrior
 {
 public:
+    Aviation (World & world, int x, int y);
     int LevelUp () override;
 };
 class Hero : public Warrior
@@ -58,6 +60,7 @@ class Hero : public Warrior
 private:
     int _radius_aura;
 public:
+    Hero (World & world, int x, int y);
     int LevelUp () override;
 };
 

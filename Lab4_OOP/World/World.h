@@ -4,7 +4,6 @@
 #include <vector>
 #include <queue>
 #include <SFML/Graphics.hpp>
-#include "../Images.h"
 
 class Warrior;
 class Building;
@@ -29,6 +28,7 @@ public:
     void SetAirLock ();
     void SetAirUnlock ();
     void SetWay (Cell & to);
+    void SetAirWay (Cell & to);
     void SetLandType (std::string* map);
     [[nodiscard]] Cell* GetNextCell () const;
     [[nodiscard]] Cell* GetAirNextCell () const;
@@ -37,6 +37,8 @@ public:
     [[nodiscard]] int GetManhattanDistance (Cell & target) const;
     std::vector <Cell*> GetNeighbors (World & world, std::vector <Cell*> & neighbors) const;
     [[nodiscard]] char GetLandType () const;
+    [[nodiscard]] bool GetLock () const;
+    [[nodiscard]] bool GetAirLock () const;
     void A_star (World & world, Cell & target);
 };
 

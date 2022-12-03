@@ -21,6 +21,7 @@ public:
     [[nodiscard]] int GetId () const ;
     Cell* GetCurCell ();
     [[nodiscard]] char GetBuildingType () const;
+    [[nodiscard]] int GetHp () const;
     void Heal ();
     void TakeDamage (int damage);
     virtual int LevelUp () = 0;
@@ -39,13 +40,15 @@ private:
     int _damage;
     int _radius;
     double _reload;
-    std::priority_queue <std::pair <int, Warrior*>, std::vector <std::pair <int, Warrior*>>, std::greater<>> _targets;
+    std::priority_queue <std::pair <int, Warrior*>, std::vector
+    <std::pair <int, Warrior*>>, std::greater<>> _targets;
 public:
     Tower (World & world, int x, int y);
     [[nodiscard]] int GetDamage () const;
     [[nodiscard]] int GetRadius () const;
+
     void FindTargets (World & world);
-    void DealDamage (Warrior & warrior) const;
+    void DealDamage ();
     int LevelUp () override;
 };
 class Wall : public Building

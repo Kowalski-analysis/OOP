@@ -58,13 +58,16 @@ void Cell::SetWay (Cell & to)
 {
     _go_to = &to;
 }
+void Cell::SetAirWay (Cell & to)
+{
+    _air_go_to = &to;
+}
 void Cell::SetLandType (std::string* map)
 {
     _land_type = map[_y][_x];
     if ((int)map[_y][_x] / 105 == 1)
     {
         SetLock();
-        SetAirLock();
     }
 }
 int Cell::GetX () const
@@ -117,6 +120,14 @@ char Cell::GetLandType () const
 {
     return _land_type;
 }
+bool Cell::GetLock () const
+{
+    return _lock;
+}
+bool Cell::GetAirLock () const
+{
+    return _air_lock;
+}
 void Cell::A_star (World & world, Cell & target)
 {
     std::priority_queue <std::pair <int, Cell*>, std::vector <std::pair <int, Cell*>>, std::greater<>> frontier;
@@ -160,6 +171,8 @@ World::World (int size_x, int size_y)
 {
     _size_x = size_x + 2;
     _size_y = size_y + 2;
+    _entities.clear();
+    _buildings.clear();
     std::vector <std::vector <Cell*>> new_vec(_size_y);
     _field = new_vec;
     for (int i = 0; i < _size_y; ++i)
@@ -282,25 +295,6 @@ void World::DrawEntities (sf::RenderWindow &window, float time)
     sf::Sprite spt;
     spt.setTexture(tex);
     spt.setTextureRect(sf::IntRect(0,0,50,50));
-    for (int j = 0; j < 4; ++j)
-    {
-        for (auto i: _entities)
-        {
-            float x_sh = i.second->DirectionOfNextCell().first;
-            float y_sh = i.second->DirectionOfNextCell().second;
-            spt.setPosition(i.second->GetX(), i.second->GetY());
-                spt.move((float)(x_sh * 44), (float)(y_sh * 11));
-                window.draw(spt);
-                i.second->AddtoX(x_sh * 44);
-                i.second->AddtoY(y_sh * 11);
-        }
-    }
-    for (auto i: _entities)
-    {
-        if (i.second->GetCurCell()->GetNextCell() != nullptr)
-        {
-            i.second->Move();
-        }
-    }
+
 }
 

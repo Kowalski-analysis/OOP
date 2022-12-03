@@ -1,5 +1,4 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "World/World.h"
 #include "Buildings/Buildings.h"
 #include "Entities/Entities.h"
@@ -10,14 +9,16 @@ int main()
     sf::Clock clock;
     World W(8, 20);
     W.GetField()[10][4]->A_star(W, *W.GetField()[11][4]);
-//    Wall VV1(W, 3, 7);
-//    Wall VV2(W, 4, 8);
-//    Wall VV3(W, 4, 9);
-//    Wall VV4(W, 5, 10);
-//    Wall VV5(W, 5, 11);
-//    Castle C(W, 4, 14);
-//    Tower T(W, 6, 17);
-//    Spawner S(W, 3, 6);
+    Knight K1(W, 1,1);
+    Wall VV1(W, 3, 7);
+    Wall VV2(W, 4, 8);
+    Wall VV3(W, 4, 9);
+    Wall VV4(W, 5, 10);
+    Wall VV5(W, 5, 11);
+    Castle C(W, 4, 14);
+    Tower T(W, 6, 17);
+    Spawner S(W, 3, 6);
+    W.GetField()[1][1]->A_star(W, *W.GetField()[17][5]);
     while (window.isOpen())
     {
         float time = (float)clock.getElapsedTime().asMicroseconds();
@@ -38,10 +39,6 @@ int main()
         window.clear();
         W.DrawLand(window);
         W.DrawBuildings(window);
-        if (K.GetCurCell()->GetNextCell() != nullptr)
-        {
-            W.DrawEntities(window, time);
-        }
         window.display();
     }
     return 0;

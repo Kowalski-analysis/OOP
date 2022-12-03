@@ -109,20 +109,98 @@ bool Knight::AvoidDamage ()
 }
 int Knight::LevelUp ()
 {
+    if (_level == _max_level)
+    {
+        return 1;
+    }
+    ++_level;
+    _damage += 10;
+    _hp += 100;
     return 0;
 }
 
+Juggernaut::Juggernaut (World & world, int x, int y)
+{
+    _id = (int)world.GetEntities().size() + 1;
+    _hp = 100;
+    _damage = 10;
+    _level = 1;
+    _max_level = 5;
+    _velocity = 1;
+    _cur_cell = world.GetField()[y][x];
+    _x = (float)_cur_cell->GetX() * 176;
+    if (_cur_cell->GetX() % 2 == 1)
+    {
+        _x += 88;
+    }
+    _y = (float)_cur_cell->GetY() * 44;
+    world.GetEntities().emplace(_id, this);
+}
 int Juggernaut::LevelUp ()
 {
+    if (_level == _max_level)
+    {
+        return 1;
+    }
+    ++_level;
+    _damage += 20;
+    _hp += 200;
     return 0;
 }
 
+Aviation::Aviation (World & world, int x, int y)
+{
+    _id = (int)world.GetEntities().size() + 1;
+    _hp = 100;
+    _damage = 10;
+    _level = 1;
+    _max_level = 5;
+    _velocity = 1;
+    _cur_cell = world.GetField()[y][x];
+    _x = (float)_cur_cell->GetX() * 176;
+    if (_cur_cell->GetX() % 2 == 1)
+    {
+        _x += 88;
+    }
+    _y = (float)_cur_cell->GetY() * 44;
+    world.GetEntities().emplace(_id, this);
+}
 int Aviation::LevelUp ()
 {
+    if (_level == _max_level)
+    {
+        return 1;
+    }
+    ++_level;
+    _damage += 30;
     return 0;
 }
 
+Hero::Hero (World & world, int x, int y)
+{
+    _id = (int)world.GetEntities().size() + 1;
+    _hp = 100;
+    _damage = 10;
+    _level = 1;
+    _max_level = 5;
+    _velocity = 1;
+    _cur_cell = world.GetField()[y][x];
+    _x = (float)_cur_cell->GetX() * 176;
+    if (_cur_cell->GetX() % 2 == 1)
+    {
+        _x += 88;
+    }
+    _y = (float)_cur_cell->GetY() * 44;
+    world.GetEntities().emplace(_id, this);
+    _radius_aura = 5;
+}
 int Hero::LevelUp ()
 {
+    if (_level == _max_level)
+    {
+        return 1;
+    }
+    ++_level;
+    _radius_aura += 1;
     return 0;
 }
