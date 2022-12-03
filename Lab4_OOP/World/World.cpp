@@ -294,7 +294,14 @@ void World::DrawEntities (sf::RenderWindow &window, float time)
 
     sf::Sprite spt;
     spt.setTexture(tex);
-    spt.setTextureRect(sf::IntRect(0,0,50,50));
-
+    spt.setTextureRect(sf::IntRect(0,0,176,88));
+    for (auto i : _entities)
+    {
+        spt.setPosition(i.second->GetX(), i.second->GetY());
+        spt.move(4 * i.second->DirectionOfNextCell().first, i.second->DirectionOfNextCell().second);
+        i.second->AddtoX(4 * i.second->DirectionOfNextCell().first);
+        i.second->AddtoY(i.second->DirectionOfNextCell().second);
+        window.draw(spt);
+    }
 }
 
