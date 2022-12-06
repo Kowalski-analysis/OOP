@@ -7,12 +7,14 @@ add_subdirectory(World)
 add_subdirectory(Buildings)
 add_subdirectory(Entities)
 add_subdirectory(Testing)
+add_subdirectory(MyPriorityQueue)
 
-add_executable(Lab4_OOP main.cpp priority_queue.cpp priority_queue.h)
+add_executable(Lab4_OOP main.cpp)
 
 target_link_libraries(
         Lab4_OOP
         Entities
         Buildings
         World
+        MyPriorityQueue
 )
