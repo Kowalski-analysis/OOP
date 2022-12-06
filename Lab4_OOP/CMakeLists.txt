@@ -8,7 +8,7 @@ add_subdirectory(Buildings)
 add_subdirectory(Entities)
 add_subdirectory(Testing)
 
-add_executable(Lab4_OOP main.cpp)
+add_executable(Lab4_OOP main.cpp priority_queue.cpp priority_queue.h)
 
 target_link_libraries(
         Lab4_OOP

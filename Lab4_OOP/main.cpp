@@ -11,6 +11,7 @@ int main()
     World W(8, 20);
     W.GetField()[10][4]->A_star(W, *W.GetField()[11][4]);
     Knight K1(W, 1, 1);
+    Knight K2(W, 7, 7);
     Wall VV1(W, 3, 7);
     Wall VV2(W, 4, 8);
     Wall VV3(W, 4, 9);
@@ -20,6 +21,7 @@ int main()
     Tower T(W, 6, 17);
     Spawner S(W, 3, 6);
     W.GetField()[1][1]->A_star(W, *W.GetField()[17][5]);
+    W.GetField()[7][7]->A_star(W, *W.GetField()[16][8]);
     int i = 0;
     while (window.isOpen())
     {
@@ -47,6 +49,7 @@ int main()
         if (i == 44)
         {
             K1.Move();
+            K2.Move();
             i = 0;
         }
     }
