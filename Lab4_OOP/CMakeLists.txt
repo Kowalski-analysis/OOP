@@ -6,8 +6,10 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(World)
 add_subdirectory(Buildings)
 add_subdirectory(Entities)
-add_subdirectory(Testing)
+#add_subdirectory(Testing)
 add_subdirectory(MyPriorityQueue)
+add_subdirectory(Economy)
+add_subdirectory(Interface)
 
 add_executable(Lab4_OOP main.cpp)
 
@@ -17,4 +19,6 @@ target_link_libraries(
         Buildings
         World
         MyPriorityQueue
+        Economy
+        Interface
 )

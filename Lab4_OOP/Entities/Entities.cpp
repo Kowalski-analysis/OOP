@@ -65,8 +65,13 @@ void Warrior::TakeDamage (int damage)
         this->_hp -= damage;
     }
 }
-void Warrior::Move ()
+void Warrior::Move (World & world)
 {
+    if (_cur_cell->GetNextCell()->GetNextCell() == nullptr)
+    {
+        Die(world);
+        return;
+    }
     _cur_cell = _cur_cell->GetNextCell();
 }
 std::pair <float, float> Warrior::DirectionOfNextCell ()

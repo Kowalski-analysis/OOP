@@ -5,7 +5,4 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_library(Entities Entities.h Entities.cpp)
 
-target_link_libraries(
-        Entities
-        World
-)
+target_link_libraries(Entities World)

@@ -133,7 +133,7 @@ void Cell::A_star (World & world, Cell & target)
     std::priority_queue <std::pair <int, Cell*>, std::vector <std::pair <int, Cell*>>, std::greater<>> frontier;
     std::map <Cell*, Cell*> came_from;
     std::map <Cell*, int> cost_so_far;
-    frontier.push(std::make_pair(0, this));
+    frontier.emplace(0, this);
     came_from[this] = this;
     cost_so_far[this] = 0;
     while (!frontier.empty())

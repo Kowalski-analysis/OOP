@@ -32,7 +32,7 @@ public:
     void Die (World & world) const;
     void DealDamage (Building & building) const;
     void TakeDamage (int damage);
-    void Move ();
+    void Move (World & world);
     std::pair <float, float> DirectionOfNextCell ();
     virtual int LevelUp () = 0;
 };
