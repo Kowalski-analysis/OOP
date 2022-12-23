@@ -1,39 +1,28 @@
 #ifndef MYPRIORITYQUEUE_MENU_H
 #define MYPRIORITYQUEUE_MENU_H
-
-#include <vector>
+#include "../World/World.h"
 #include "SFML/Graphics.hpp"
-
-class Button;
 
 class Menu
 {
 private:
     float _x;
     float _y;
-    std::vector <Button*> _buttons;
     bool _show;
+    bool _tower;
+    bool _wall;
+    friend World;
 public:
     Menu (float x, float y);
     [[nodiscard]] float GetX () const;
     [[nodiscard]] float GetY () const;
-    std::vector <Button*> GetButtons ();
-    void DrawMenu (sf::Window & window);
-    void DrawButtons (sf::Window & window);
+    [[nodiscard]] bool GetShow () const;
+    void DrawMenu (sf::RenderWindow &window) const;
+    void CheckOpen (sf::RenderWindow &window);
+    void CheckTower (sf::RenderWindow &window);
+    void CheckWall (sf::RenderWindow &window);
+    void CheckButtons (sf::RenderWindow &window);
+    void NewTower (World &world, sf::RenderWindow &window);
+    void NewWall(World &world, sf::RenderWindow &window);
 };
-
-class Button
-{
-private:
-    float _x_shift;
-    float _y_shift;
-    std::string _text;
-public:
-    Button (Menu & M, float x, float y);
-    [[nodiscard]] float GetXShift () const;
-    [[nodiscard]] float GetYShift () const;
-    std::string GetText ();
-    void CheckButtons ();
-};
-
 #endif

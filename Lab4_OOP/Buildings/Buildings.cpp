@@ -174,7 +174,7 @@ Spawner::Spawner (World & world, int x, int y)
     _count_troop = 1;
     _reload = 10;
     _location = world.GetField()[y][x];
-    _location->SetLock();
+//    _location->SetLock();
     world.GetBuildings().emplace(_id, this);
 }
 int Spawner::LevelUp ()
@@ -196,6 +196,28 @@ int Spawner::LevelUp ()
 }
 void Spawner::SpawnUnit (World & world, char unit_type)
 {
-
+    switch (unit_type)
+    {
+        case 'K':
+        {
+            auto K = new Knight(world, _location->GetX(), _location->GetY());
+            _location->A_star(world, *world.GetField()[14][5]);
+            break;
+        }
+        case 'J':
+        {
+            auto J = new Juggernaut(world, _location->GetX(), _location->GetY());
+            break;
+        }
+        case 'A':
+        {
+            auto A = new Aviation(world, _location->GetX(), _location->GetY());
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
 }
 

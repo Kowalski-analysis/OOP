@@ -3,8 +3,14 @@ project(Interface)
 
 set(CMAKE_CXX_STANDARD 20)
 
-find_package(SFML COMPONENTS graphics audio REQUIRED)
+set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_DIR F:/SFML/lib/cmake/SFML)
+find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
 
-add_library(Interface Menu.h Menu.cpp)
+include_directories(F:/SFML/include/SFML)
 
-target_link_libraries(Interface sfml-graphics sfml-audio)
+add_library(Interface Menu.cpp Menu.h)
+
+target_link_libraries(
+        Interface sfml-graphics sfml-audio
+)

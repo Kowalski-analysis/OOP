@@ -222,7 +222,7 @@ void World::ReadMap ()
         }
     }
 }
-void World::DrawLand (sf::RenderWindow & window)
+void World::DrawLand (sf::RenderWindow &window)
 {
     ReadMap();
     sf::Image img;
@@ -257,16 +257,20 @@ void World::DrawLand (sf::RenderWindow & window)
         }
     }
 }
-void World::DrawBuildings (sf::RenderWindow & window)
+void World::DrawBuildings (sf::RenderWindow &window)
 {
     sf::Image img;
-    img.loadFromFile("../Textures/Buildings_test.png");
+    img.loadFromFile("../Textures/Buildings.png");
 
     sf::Texture tex;
     tex.loadFromImage(img);
 
     sf::Sprite spt;
     spt.setTexture(tex);
+    for (auto i : _buildings)
+    {
+        i.second->Destroy(*this);
+    }
     for (auto i : _buildings)
     {
         float x = (float)i.second->GetCurCell()->GetX() * 176;
@@ -284,7 +288,7 @@ void World::DrawBuildings (sf::RenderWindow & window)
         window.draw(spt);
     }
 }
-void World::DrawEntities (sf::RenderWindow &window, float time)
+void World::DrawEntities (sf::RenderWindow &window)
 {
     sf::Image img;
     img.loadFromFile("../Textures/Entities_test.png");
@@ -302,6 +306,11 @@ void World::DrawEntities (sf::RenderWindow &window, float time)
         i.second->AddtoX(4 * i.second->DirectionOfNextCell().first);
         i.second->AddtoY(i.second->DirectionOfNextCell().second);
         window.draw(spt);
+        if (i.second->GetCurCell()->GetNextCell()->GetY() * 44 == (int)i.second->GetY() &&
+        i.second->GetCurCell()->GetNextCell()->GetX() * 176 + (i.second->GetCurCell()->GetNextCell()->GetY() % 2) * 88 == (int)i.second->GetX())
+        {
+            i.second->Move(*this);
+        }
     }
 }
 

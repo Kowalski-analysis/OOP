@@ -60,7 +60,7 @@ public:
     void ReadMap ();
     void DrawLand (sf::RenderWindow & window);
     void DrawBuildings (sf::RenderWindow & window);
-    void DrawEntities (sf::RenderWindow & window, float time);
+    void DrawEntities (sf::RenderWindow & window);
 };
 
 #endif //LAB4_OOP_WORLD_H

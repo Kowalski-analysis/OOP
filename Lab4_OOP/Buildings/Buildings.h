@@ -25,14 +25,14 @@ public:
     void Heal ();
     void TakeDamage (int damage);
     virtual int LevelUp () = 0;
-    void Destroy (World & world) const;
+    void Destroy (World &world) const;
 };
 class Castle : public Building
 {
 public:
-    Castle (World & world, int x, int y);
+    Castle (World &world, int x, int y);
     int LevelUp () override;
-    void CheckEntities (World & world);
+    void CheckEntities (World &world);
 };
 class Tower : public Building
 {
@@ -64,7 +64,7 @@ private:
     double _reload;
 public:
     Spawner (World & world, int x, int y);
-    void SpawnUnit (World & world, char unit_type);
+    void SpawnUnit (World &world, char unit_type);
     int LevelUp () override;
 };
 
